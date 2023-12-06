@@ -9,7 +9,7 @@ const HeadingWrap = styled('div', {
   width: '100%',
   strong: '$sansSerifBold',
 
-  // For the variants of the heading, which is able to change the size of the text and the color
+  // For the variants of the heading, which is able to change the size of the text, color, and alignment
   // By default, the font size is 1rem( 16px ) so we can use these to address smaller or larger font sizes
 
   variants: {
@@ -27,6 +27,12 @@ const HeadingWrap = styled('div', {
 
     color: {
       primary: { color: '$textSecondary' }
+    },
+
+    // For the ability to align the heading text in the center of the container
+
+    align: {
+      center: { textAlign: 'center' }
     }
   }
 })
@@ -37,6 +43,7 @@ interface HeadingProps {
   title: string | number
   htag?: '1' | '2' | '3' | '4'
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5'
+  align?: 'center'
   color?: 'primary'
   bold?: boolean
 }
@@ -56,6 +63,7 @@ export const Heading = ({
     title, // Required - For the heading title, which is what the component is used for
     htag, // Optional - For the htag support for SEO purposes
     size, // Optional - For the different font sizes of the heading
+    align, // Optional - For the ability to align the text in the center of the container
     color, // Optional - For support of brand colors within the heading
     bold // Optional - For the heading to be in bold font
   }:HeadingProps) => {
@@ -65,7 +73,7 @@ export const Heading = ({
   return(
 
     <HTag>
-      <HeadingWrap {...{ size, color }}>
+      <HeadingWrap {...{ size, color, align }}>
         { bold ? ( <strong>{ title }</strong> ) : <>{ title }</> }
       </HeadingWrap>
     </HTag>

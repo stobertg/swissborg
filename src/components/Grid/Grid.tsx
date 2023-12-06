@@ -96,6 +96,19 @@ const GridWrap = styled('div', {
       10: { '@mobile': { gridTemplateColumns: 'repeat(10, 1fr)' }},
       11: { '@mobile': { gridTemplateColumns: 'repeat(11, 1fr)' }},
       12: { '@mobile': { gridTemplateColumns: 'repeat(12, 1fr)' }}
+    },
+
+    columnGap: {
+      'l0': { columnGap: 20 },
+      'l1': { columnGap: 40 },
+      'l2': { columnGap: 60 },
+      'l3': { columnGap: 80 }
+    },
+
+    verticalAlignment: {
+      center: {
+        alignItems: 'center',
+      }
     }
   }
 })
@@ -108,6 +121,8 @@ interface GridProps {
   smallDesktopColumns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
   tabletColumns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
   mobileColumns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+  columnGap?: 'l0' | 'l1' | 'l2' | 'l3'
+  verticalAlignment?: 'center'
   children: React.ReactNode
 }
 
@@ -115,16 +130,18 @@ interface GridProps {
 
 export const Grid = ({ 
     columns, // Required - Set the columns needed for the grid
+    columnGap, // Optional - For the spacing between the grid columns
     largeDesktopColumns, // Optional - Supporting columns for large desktop breakpoints
     smallDesktopColumns, // Optional - Supporting columns for small desktop breakpoints
     tabletColumns, // Optional - Supporting columns for tablet breakpoints
     mobileColumns, // Optional - Supporting columns for mobile breakpoints
+    verticalAlignment, // Optional - To align all of the columns vertically in the container
     children // Required - For the content inside of the grid
   }:GridProps) => {
 
   return(
 
-    <GridWrap {...{ columns, largeDesktopColumns, smallDesktopColumns, tabletColumns, mobileColumns }}>
+    <GridWrap {...{ columns, columnGap, largeDesktopColumns, smallDesktopColumns, tabletColumns, mobileColumns, verticalAlignment }}>
       { children }
     </GridWrap>
 

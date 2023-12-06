@@ -9,8 +9,8 @@ const IconWrap = styled('span', {
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
-  width: 30,
-  height: 30,
+  width: 48,
+  height: 48,
   pointerEvents: 'none',
   overflow: 'hidden',
 
@@ -21,39 +21,25 @@ const IconWrap = styled('span', {
     position: 'absolute',
     width: '108%',
     fill: 'CurrentColor'
-  },
-
-  variants: {
-    color: {
-      primary: { color: '$brandPrimary' }
-    }
   }
 })
 
 // -------------- Typescript declarations -------------- //
 
 interface IconProps {
-  color?: 'primary'
   icon: string
-  iconAlt?: string
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Icon = ({
-    color,
     icon
   }: IconProps ) => {
   
   return(
 
-    <IconWrap {...{ color }}>
-      <svg>
-        <use 
-          xlinkHref={ `/global/icons/icons.svg#${ icon }` }
-          xlinkTitle={ icon } 
-        />
-      </svg>
+    <IconWrap>
+      <img src={`/global/icons/individual/${ icon }.svg`} alt={ `${ icon } icon` } />
     </IconWrap>
     
   )

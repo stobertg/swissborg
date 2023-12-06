@@ -17,6 +17,7 @@ const StatContent = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
   padding: '12px 0'
@@ -37,7 +38,8 @@ const StatTitle = styled('div', {
 // This always has the associated number but can be accompanied by a percentage description below
 
 const StatNumber = styled('div', {
-
+  position: 'relative',
+  textAlign: 'right'
 })
 
 // -------------- Typescript declarations -------------- //
@@ -56,7 +58,7 @@ interface StatProps {
 export const Stats = ({ stats }:StatProps) => {
   return(
 
-    <List>
+    <List hasDividers>
       { stats.map(( stat, i ) => (
 
         <li key={`stat-${ i }`}>
@@ -68,7 +70,7 @@ export const Stats = ({ stats }:StatProps) => {
               </StatTitle>
 
               <StatNumber>
-                <Heading htag="4" bold color="primary" title={ stat.number } />
+                <Heading bold htag="4" size="l3" color="primary" title={ stat.number } />
                 { stat.numberDescp && ( <Heading color="primary" title={ stat.numberDescp } /> )}
               </StatNumber>
             </StatContent>
