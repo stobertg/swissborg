@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
 
     <SiteContainer>
-      <Block bgColor="darkGradient">
+      <Block width="medium" bgColor="darkGradient">
         <div>This is the content</div>
       </Block>
     </SiteContainer>
