@@ -1,1 +1,3 @@
-export const lightThemeColors = {}
+export const lightThemeColors = {
+  brandPrimary: '$green'
+}

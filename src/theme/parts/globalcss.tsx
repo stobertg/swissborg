@@ -41,6 +41,10 @@ export const globalStyle = {
 
   p: { margin: 0 },
 
+  ul: {
+    listStyle: 'none'
+  },
+
   'fieldset, ul, figure, button': {
     border: 'none',
     padding: 0,
