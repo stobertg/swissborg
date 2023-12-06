@@ -1,6 +1,8 @@
 export { Block } from './Block/Block'
 export { Grid } from './Grid/Grid'
+export { Heading } from './Heading/Heading'
 export { HeadTags } from './HeadTags/HeadTags'
 export { Icon } from './Icon/Icon'
 export { List } from './List/List'
 export { SiteContainer } from './SiteContainer/SiteContainer'
+export { Stats } from './Stats/Stats'

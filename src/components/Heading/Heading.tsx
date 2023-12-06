@@ -34,7 +34,7 @@ const HeadingWrap = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface HeadingProps {
-  title: string
+  title: string | number
   htag?: '1' | '2' | '3' | '4'
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5'
   color?: 'primary'

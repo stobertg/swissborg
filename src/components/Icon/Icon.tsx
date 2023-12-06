@@ -21,6 +21,12 @@ const IconWrap = styled('span', {
     position: 'absolute',
     width: '108%',
     fill: 'CurrentColor'
+  },
+
+  variants: {
+    color: {
+      primary: { color: '$brandPrimary' }
+    }
   }
 })
 
@@ -28,7 +34,7 @@ const IconWrap = styled('span', {
 
 interface IconProps {
   color?: 'primary'
-  icon?: string
+  icon: string
   iconAlt?: string
 }
 
