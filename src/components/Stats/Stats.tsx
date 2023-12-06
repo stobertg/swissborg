@@ -20,24 +20,25 @@ const StatContent = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '12px 0'
+  padding: '12px 0',
+  '> *:not(:last-child)': { marginRight: 12 }
 })
 
-// For the container of the title area on the left of the container
-// This contains the icon on the left and the title to the right of the icon
-
-const StatTitle = styled('div', {
+const StatMain = styled('div', {
   display: 'flex',
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
   position: 'relative',
-  '> *:not(:last-child)': { marginRight: 12 }
 })
 
 // For the container of the number(s) on the right side of the contianer
 // This always has the associated number but can be accompanied by a percentage description below
 
 const StatNumber = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  whiteSpace: 'nowrap',
   position: 'relative',
   textAlign: 'right'
 })
@@ -64,15 +65,16 @@ export const Stats = ({ stats }:StatProps) => {
         <li key={`stat-${ i }`}>
           <Stat>
             <StatContent>
-              <StatTitle>
-                <Icon icon={ stat.icon } />
-                <Heading size="l3" title={ stat.title } />
-              </StatTitle>
+              <Icon icon={ stat.icon } />
 
-              <StatNumber>
-                <Heading bold htag="4" size="l3" color="primary" title={ stat.number } />
-                { stat.numberDescp && ( <Heading color="primary" title={ stat.numberDescp } /> )}
-              </StatNumber>
+              <StatMain>
+                <Heading size="l2" title={ stat.title } />
+
+                <StatNumber>
+                  <Heading bold htag="4" size="l2" color="primary" title={ stat.number } />
+                  { stat.numberDescp && ( <Heading size="l1" color="primary" title={ stat.numberDescp } /> )}
+                </StatNumber>
+              </StatMain>
             </StatContent>
           </Stat>
         </li>

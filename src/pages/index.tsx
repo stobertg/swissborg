@@ -16,9 +16,9 @@ const Home: NextPage = () => {
           stats={[
             { icon: 'token', title: 'Remaining circulating supply', number: 153134595 },
             { icon: 'diamond', title: 'BORG staked', number: 179102513, numberDescp: '(25.43% of Circulating supply' },
-            { icon: 'token', title: 'BORG in Yield', number: 362065045, numberDescp: '(51.41% of Circulating supply)' },
-            { icon: 'token', title: 'Circulating supply burned', number: 9901614.29 },
-            { icon: 'token', title: 'BORG in buyback pool', number: 13456 },
+            { icon: 'diamond', title: 'BORG in Yield', number: 362065045, numberDescp: '(51.41% of Circulating supply)' },
+            { icon: 'fire', title: 'Circulating supply burned', number: 9901614.29 },
+            { icon: 'buyback', title: 'BORG in buyback pool', number: 13456 },
           ]}
         />
       </Block>

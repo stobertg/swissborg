@@ -7,19 +7,20 @@ import { styled } from '@theme'
 const HeadingWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  strong: '$sansSerifBold',
+  lineHeight: 1,
+  strong: { fontFamily: '$sansSerifBold' },
 
   // For the variants of the heading, which is able to change the size of the text, color, and alignment
   // By default, the font size is 1rem( 16px ) so we can use these to address smaller or larger font sizes
 
   variants: {
     size: {
-      'l0': { fontSize: '$s0', lineHeight: 1.2 }, // 14px
-      'l1': { fontSize: '$s1', lineHeight: 1.15 }, // 18px
-      'l2': { fontSize: '$s2', lineHeight: 1.15, '@mobile': { fontSize: '$s1' }}, // 22px > 18px
-      'l3': { fontSize: '$s3', lineHeight: 1.25, '@mobile': { fontSize: '$s2' }}, // 28px > 22px
-      'l4': { fontSize: '$s6', lineHeight: 1.15, '@mobile': { fontSize: '$s4' }}, // 48px > 32px
-      'l5': { fontSize: '$s7', lineHeight: 1.05, '@mobile': { fontSize: '$s5' }}  // 80px > 40px
+      'l0': { fontSize: '$s0', lineHeight: 1 }, // 14px
+      'l1': { fontSize: '$s1', lineHeight: 1 }, // 18px
+      'l2': { fontSize: '$s2', lineHeight: 1, '@mobile': { fontSize: '$s1' }}, // 22px > 18px
+      'l3': { fontSize: '$s3', lineHeight: 1, '@mobile': { fontSize: '$s2' }}, // 28px > 22px
+      'l4': { fontSize: '$s6', lineHeight: 1, '@mobile': { fontSize: '$s4' }}, // 48px > 32px
+      'l5': { fontSize: '$s7', lineHeight: 1, '@mobile': { fontSize: '$s5' }}  // 80px > 40px
     },
 
     // For the different colors of the heading - if needed can change to SwissBorg's brand color, such as the numbers

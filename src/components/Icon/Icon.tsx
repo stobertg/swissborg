@@ -4,7 +4,7 @@ import { styled } from '@theme'
 // For the master container of the icons
 // Icons are used in various parts of the size, such as buttons, steps, static, ect
 
-const IconWrap = styled('span', {
+const IconWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -32,9 +32,7 @@ interface IconProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const Icon = ({
-    icon
-  }: IconProps ) => {
+export const Icon = ({ icon }: IconProps ) => {
   
   return(
 
