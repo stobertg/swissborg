@@ -9,7 +9,6 @@ const BlockWrap = styled('div', {
 const BlockContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
   position: 'relative',
   width: '100%',
 
@@ -22,7 +21,8 @@ const BlockContent = styled('div', {
 
     bgColor: {
       darkGradient: {
-        background: 'linear-gradient(90deg, rgba(25,30,41,1) 0%, rgba(54,64,83,1) 100%)'
+        background: 'linear-gradient(90deg, rgba(25,30,41,1) 0%, rgba(54,64,83,1) 100%)',
+        color: '$white'
       }
     }
   }

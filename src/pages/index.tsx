@@ -1,12 +1,14 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import { SiteContainer } from '@components'
+import { SiteContainer, Block } from '@components'
 
 const Home: NextPage = () => {
   return (
 
     <SiteContainer>
-      <div>This is the content</div>
+      <Block bgColor="darkGradient">
+        <div>This is the content</div>
+      </Block>
     </SiteContainer>
 
   )

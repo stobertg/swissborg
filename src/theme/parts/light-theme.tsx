@@ -1,3 +1,6 @@
 export const lightThemeColors = {
-  brandPrimary: '$green'
+  white: '#fff',
+  brandPrimary: '$green',
+  textPrimary: '$black',
+  textSecondary: '$green'
 }
