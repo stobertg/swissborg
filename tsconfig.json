@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@components": [ "src/components" ],
+      "@forms/*": [ "src/forms/*" ],
+      "@lib": [ "src/lib" ],
+      "@pages": [ "src/pages" ],
+      "@public/*": [ "public/*" ],
+      "@theme": [ "src/theme/stitches.config.ts" ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.graphql",
+    "src/theme/color.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
