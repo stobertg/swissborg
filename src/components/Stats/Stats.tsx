@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { List, Heading, Icon } from '@components'
+import { formatNumberWithCommas } from '@lib'
 
 // For the master container of the stat list
 // This components holds all of the data
@@ -50,7 +51,7 @@ interface StatProps {
     title: string
     icon: string
     number: number
-    numberDescp?: string
+    percentage?: number
   }[]
 }
 
@@ -71,8 +72,21 @@ export const Stats = ({ stats }:StatProps) => {
                 <Heading size="l2" title={ stat.title } />
 
                 <StatNumber>
-                  <Heading bold htag="4" size="l2" color="primary" title={ stat.number } />
-                  { stat.numberDescp && ( <Heading size="l1" color="primary" title={ stat.numberDescp } /> )}
+                  <Heading 
+                    bold 
+                    htag="4" 
+                    size="l2" 
+                    color="primary" 
+                    title={ formatNumberWithCommas( stat.number ) } 
+                  />
+
+                  { stat.percentage && ( 
+                    <Heading 
+                      size="l1" 
+                      color="primary" 
+                      title={ <>&#40;<strong>{ stat.percentage }%</strong> of Circulating supply&#41;</> } 
+                    />
+                  )}
                 </StatNumber>
               </StatMain>
             </StatContent>

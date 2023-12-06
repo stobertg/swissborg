@@ -42,7 +42,7 @@ interface ChartProps {
     title: string
     icon: string
     number: number
-    numberDescp?: string
+    percentage?: number
   }[]
 }
 
