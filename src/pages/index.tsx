@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
-import { DonutChart } from '../components/SupplyChart/Parts/DonutChart'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
 import { getTokenDetails } from './api/coinGecko'
 import { getBorgMarketSupply } from './api/supply'
@@ -59,11 +58,8 @@ const Home: NextPage = () => {
             { icon: 'fire', title: 'Circulating supply burned', number: coinsBurned },
             { icon: 'buyback', title: 'BORG in buyback pool', number: buybackPool },
           ]}
+          chartData={ chartData }
         />
-      </Block>
-
-      <Block width="medium">
-        <DonutChart data={chartData} />
       </Block>
     </SiteContainer>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
+import { customLabel } from './CustomLabels'
 
 interface DataItem {
   title: string;
@@ -26,9 +27,26 @@ export const DonutChart = ({ data }: ChartProps) => {
       ],
       borderWidth: 1,
     }]
-  };
+  }
 
-  return <Doughnut data={chartData} />;
-};
+  const options = {
+    plugins: {
+      tooltip: {
+        enabled: false
+      },
+      legend: {
+        display: true
+      }
+    }
+  }
 
-export default DonutChart;
+  return( 
+
+    <Doughnut 
+      data={ chartData } 
+      options={ options } 
+      plugins={[ customLabel ]} 
+    />
+
+  )
+}
