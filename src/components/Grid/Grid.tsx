@@ -67,18 +67,18 @@ const GridWrap = styled('div', {
     // Here we support the customization of the columns needed for the tablet breakpoints
 
     tabletColumns: { 
-      1: {  '@tablet': { gridTemplateColumns: 'repeat(1, 1fr)'  }},
-      2: {  '@tablet': { gridTemplateColumns: 'repeat(2, 1fr)'  }},
-      3: {  '@tablet': { gridTemplateColumns: 'repeat(3, 1fr)'  }},
-      4: {  '@tablet': { gridTemplateColumns: 'repeat(4, 1fr)'  }},
-      5: {  '@tablet': { gridTemplateColumns: 'repeat(5, 1fr)'  }},
-      6: {  '@tablet': { gridTemplateColumns: 'repeat(6, 1fr)'  }},
-      7: {  '@tablet': { gridTemplateColumns: 'repeat(7, 1fr)'  }},
-      8: {  '@tablet': { gridTemplateColumns: 'repeat(8, 1fr)'  }},
-      9: {  '@tablet': { gridTemplateColumns: 'repeat(9, 1fr)'  }},
-      10: { '@tablet': { gridTemplateColumns: 'repeat(10, 1fr)' }},
-      11: { '@tablet': { gridTemplateColumns: 'repeat(11, 1fr)' }},
-      12: { '@tablet': { gridTemplateColumns: 'repeat(12, 1fr)' }}
+      1: {  '@tablet': { gridTemplateColumns: 'repeat(1, 1fr)', rowGap: 50 }},
+      2: {  '@tablet': { gridTemplateColumns: 'repeat(2, 1fr)', rowGap: 50  }},
+      3: {  '@tablet': { gridTemplateColumns: 'repeat(3, 1fr)', rowGap: 50  }},
+      4: {  '@tablet': { gridTemplateColumns: 'repeat(4, 1fr)', rowGap: 50  }},
+      5: {  '@tablet': { gridTemplateColumns: 'repeat(5, 1fr)', rowGap: 50  }},
+      6: {  '@tablet': { gridTemplateColumns: 'repeat(6, 1fr)', rowGap: 50  }},
+      7: {  '@tablet': { gridTemplateColumns: 'repeat(7, 1fr)', rowGap: 50  }},
+      8: {  '@tablet': { gridTemplateColumns: 'repeat(8, 1fr)', rowGap: 50  }},
+      9: {  '@tablet': { gridTemplateColumns: 'repeat(9, 1fr)', rowGap: 50  }},
+      10: { '@tablet': { gridTemplateColumns: 'repeat(10, 1fr)', rowGap: 50 }},
+      11: { '@tablet': { gridTemplateColumns: 'repeat(11, 1fr)', rowGap: 50 }},
+      12: { '@tablet': { gridTemplateColumns: 'repeat(12, 1fr)', rowGap: 50 }}
     },
 
     // Here we support the customization of the columns needed for the mobile breakpoints

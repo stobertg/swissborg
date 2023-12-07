@@ -46,6 +46,10 @@ export const useScrollDirection = () => {
 }
 
 
-export const formatNumberWithCommas = ( number:number ) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const formatNumberWithCommas = (number:number) => {
+  return Math.floor(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export const formatToTwoDecimals = (number: number | string) => {
+  return parseFloat(number.toString()).toFixed(2)
 }

@@ -1,10 +1,18 @@
 import React from 'react'
 import { styled } from '@theme'
 import { List, Heading, Icon } from '@components'
-import { formatNumberWithCommas } from '@lib'
+import { formatNumberWithCommas, formatToTwoDecimals } from '@lib'
 
 // For the master container of the stat list
 // This components holds all of the data
+
+const StatWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  '@tablet': { 
+    border: '1px solid $border'
+  }
+})
 
 const Stat = styled('div', {
   position: 'relative',
@@ -31,6 +39,13 @@ const StatMain = styled('div', {
   flexDirection: 'row',
   alignItems: 'center',
   position: 'relative',
+
+  '@tablet': {
+    flexDirection: 'column-reverse',
+    alignItems: 'flex-start',
+    '*': { textAlign: 'left' },
+    '> *:not(:last-child)': { marginTop: 4 }
+  }
 })
 
 // For the container of the number(s) on the right side of the contianer
@@ -60,41 +75,43 @@ interface StatProps {
 export const Stats = ({ stats }:StatProps) => {
   return(
 
-    <List hasDividers>
-      { stats.map(( stat, i ) => (
+    <StatWrap>
+      <List hasDividers>
+        { stats.map(( stat, i ) => (
 
-        <li key={`stat-${ i }`}>
-          <Stat>
-            <StatContent>
-              <Icon icon={ stat.icon } />
+          <li key={`stat-${ i }`}>
+            <Stat>
+              <StatContent>
+                <Icon icon={ stat.icon } />
 
-              <StatMain>
-                <Heading size="l2" title={ stat.title } />
+                <StatMain>
+                  <Heading size="l2" title={ stat.title } />
 
-                <StatNumber>
-                  <Heading 
-                    bold 
-                    htag="4" 
-                    size="l2" 
-                    color="primary" 
-                    title={ formatNumberWithCommas( stat.number ) } 
-                  />
-
-                  { stat.percentage && ( 
+                  <StatNumber>
                     <Heading 
-                      size="l1" 
+                      bold 
+                      htag="4" 
+                      size="l2" 
                       color="primary" 
-                      title={ <>&#40;<strong>{ stat.percentage }%</strong> of Circulating supply&#41;</> } 
+                      title={ formatNumberWithCommas( stat.number ) } 
                     />
-                  )}
-                </StatNumber>
-              </StatMain>
-            </StatContent>
-          </Stat>
-        </li>
 
-      ))}  
-    </List>
+                    { stat.percentage && ( 
+                      <Heading 
+                        size="l1" 
+                        color="primary" 
+                        title={ <>&#40;<strong>{ formatToTwoDecimals( stat.percentage )}%</strong> of Circulating supply&#41;</> } 
+                      />
+                    )}
+                  </StatNumber>
+                </StatMain>
+              </StatContent>
+            </Stat>
+          </li>
+
+        ))}  
+      </List>
+    </StatWrap>
 
   )
 }

@@ -5,7 +5,11 @@ import { Grid, Heading, Stats } from '@components'
 const ChartWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  '> *:not(:last-child)': { marginBottom: 72 }
+
+  '> *:not(:last-child)': { 
+    marginBottom: 72,
+    '@tablet': { marginBottom: 32 } 
+  }
 })
 
 const ChartContent = styled('div', {
@@ -56,9 +60,17 @@ export const SupplyChart = ({
   return(
 
     <ChartWrap>
-      <ChartTitle><Heading bold size="l4" align="center" {...{ title }} /></ChartTitle>
+      <ChartTitle>
+        <Heading bold size="l4" {...{ title }} />
+      </ChartTitle>
+
       <ChartContent>
-        <Grid columns={ 2 } columnGap="l3" verticalAlignment="center">
+        <Grid 
+          columns={ 2 }
+          tabletColumns={ 1 } 
+          columnGap="l3" 
+          verticalAlignment="center"
+        >
           <Stats {...{ stats }} />
           <Chart><ChartMain /></Chart>
         </Grid>
