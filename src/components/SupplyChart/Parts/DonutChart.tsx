@@ -1,7 +1,9 @@
-import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import 'chart.js/auto';
+import React from 'react'
+import { Doughnut } from 'react-chartjs-2'
+import 'chart.js/auto'
 import { customLabel } from './CustomLabels'
+
+// -------------- Typescript declarations -------------- //
 
 interface DataItem {
   title: string;
@@ -12,30 +14,36 @@ interface ChartProps {
   data: DataItem[];
 }
 
+// ---------- This is the end of declarations ---------- //
+
 export const DonutChart = ({ data }: ChartProps) => {
   const chartData = {
     labels: data.map((item: DataItem) => item.title),
     datasets: [{
       label: 'Supply Data',
       data: data.map((item: DataItem) => item.number),
+      borderWidth: 2,
       backgroundColor: [
         'red',
         'blue',
-        'green',
+        '$brandPrimary',
         'yellow',
         'purple'
       ],
-      borderWidth: 1,
+      
     }]
   }
 
   const options = {
+    animation: {
+      duration: 0
+    },
     plugins: {
       tooltip: {
         enabled: false
       },
       legend: {
-        display: true
+        display: false
       }
     }
   }
@@ -45,7 +53,8 @@ export const DonutChart = ({ data }: ChartProps) => {
     <Doughnut 
       data={ chartData } 
       options={ options } 
-      plugins={[ customLabel ]} 
+      // plugins={[ customLabel ]} 
+      width={ 0.8 }
     />
 
   )

@@ -1,1 +1,3 @@
-export const radius = {}
+export const radius = {
+  r0: '8px'
+}

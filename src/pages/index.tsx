@@ -10,9 +10,9 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allData = await  getTokenDetails();
+      
         const data = await getBorgMarketSupply();
-        console.log( allData )
+        console.log( data )
         setSupplyInfo(data as any);
       } catch (error) {
         console.error('Error fetching supply data:', error);
@@ -51,6 +51,7 @@ const Home: NextPage = () => {
       <Block width="medium">
         <SupplyChart 
           title="Breakdown of BORG&apos;s circulating supply"
+          chartData={ chartData }
           stats={[
             { icon: 'token', title: 'Remaining circulating supply', number: remainingSupply },
             { icon: 'diamond', title: 'BORG staked', number: coinsStaked, percentage: stakedPercentage },
@@ -58,7 +59,6 @@ const Home: NextPage = () => {
             { icon: 'fire', title: 'Circulating supply burned', number: coinsBurned },
             { icon: 'buyback', title: 'BORG in buyback pool', number: buybackPool },
           ]}
-          chartData={ chartData }
         />
       </Block>
     </SiteContainer>

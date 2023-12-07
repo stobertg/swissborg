@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading } from '@components'
+import { Heading, MarketChart } from '@components'
 
 const HeroWrap = styled('div', {
 
@@ -11,7 +11,8 @@ const HeroContent = styled('div', {
 })
 
 const HeroTitle = styled('div', {
-
+  position: 'relative',
+  width: '100%'
 })
 
 const HeroChart = styled('div', {
@@ -29,11 +30,13 @@ export const Hero = ({ title, subTitle }:HeroProps) => {
     <HeroWrap>
       <HeroContent>
         <HeroTitle>
-          <Heading bold size="l5" {...{ title }} />
-          <Heading bold size="l3" title={ subTitle } />
+          <Heading bold align="center" size="l5" {...{ title }} />
+          <Heading align="center" size="l3" title={ subTitle } />
         </HeroTitle>
 
-        <HeroChart></HeroChart>
+        <HeroChart>
+          <MarketChart />
+        </HeroChart>
       </HeroContent>
     </HeroWrap>
 

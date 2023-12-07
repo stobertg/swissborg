@@ -21,6 +21,14 @@ const IconWrap = styled('div', {
     position: 'absolute',
     width: '108%',
     fill: 'CurrentColor'
+  },
+
+  variants: {
+    size: {
+      l0: { width: 16, height: 16 },
+      l1: { width: 24, height: 24 },
+      l2: { width: 32, height: 32 }
+    }
   }
 })
 
@@ -28,15 +36,16 @@ const IconWrap = styled('div', {
 
 interface IconProps {
   icon: string
+  size?: 'l0' | 'l1' | 'l2'
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const Icon = ({ icon }: IconProps ) => {
+export const Icon = ({ icon, size }: IconProps ) => {
   
   return(
 
-    <IconWrap>
+    <IconWrap {...{ size }}>
       <img src={`/global/icons/individual/${ icon }.svg`} alt={ `${ icon } icon` } />
     </IconWrap>
     
