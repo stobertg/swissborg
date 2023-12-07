@@ -7,6 +7,12 @@ import { ChartOptions } from 'chart.js'
 import 'chart.js/auto'
 
 const ChartWrap = styled('div', {
+  position: 'relative',
+  maxWidth: 900,
+  width: '90%',
+  margin: '0 auto',
+  borderRadius: '$r0',
+  boxShadow: '0 10px 20px rgba( 0,0,0, 0.3 )'
 })
 
 const ChartContent = styled('div', {
@@ -14,6 +20,7 @@ const ChartContent = styled('div', {
 })
 
 const ChartMain = styled('div', {
+  height: 300,
   background: '$black',
 })
 
@@ -52,7 +59,12 @@ export const MarketChart = ({}:ChartProps) => {
   }, [])
 
   const options: ChartOptions<'line'> = {
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: { 
+        top: 32,
+      }
+    },
     scales: {
       x: {
         grid: {
@@ -62,7 +74,7 @@ export const MarketChart = ({}:ChartProps) => {
           maxTicksLimit: 6, 
           autoSkip: true,
           align: 'inner',
-          padding: 20
+          color: '#fff'
         },
         afterBuildTicks: function(scale) {
           let ticks = scale.ticks
@@ -85,6 +97,11 @@ export const MarketChart = ({}:ChartProps) => {
         grid: {
           color: 'rgba(255, 255, 255, 0.05)',
         },
+        ticks: {
+          maxTicksLimit: 5, 
+          align: 'center',
+          color: '#fff'
+        }
       },
     },
     plugins: {
