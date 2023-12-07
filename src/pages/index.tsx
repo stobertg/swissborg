@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
+import { DonutChart } from '../components/SupplyChart/Parts/DonutChart'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { getBorgMarketData } from './api/coinGecko'
+import { getTokenDetails } from './api/coinGecko'
 import { getBorgMarketSupply } from './api/supply'
 
-
 const Home: NextPage = () => {
-  const [totalSupply, setTotalSupply] = useState(null)
   const [supplyInfo, setSupplyInfo] = useState({ circulatingSupply: 0, maxSupply: 0 });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const allData = await  getTokenDetails();
         const data = await getBorgMarketSupply();
-        console.log( data )
+        console.log( allData )
         setSupplyInfo(data as any);
       } catch (error) {
         console.error('Error fetching supply data:', error);
@@ -21,8 +21,7 @@ const Home: NextPage = () => {
     };
 
     fetchData();
-  }, []);
-
+  }, [])
 
   let remainingSupply = supplyInfo.maxSupply - supplyInfo.circulatingSupply
   let coinsStaked = 179102513
@@ -31,6 +30,14 @@ const Home: NextPage = () => {
   let yeildPercentage = ( 362065045 / supplyInfo.circulatingSupply ) * 100
   let coinsBurned = 9901614.29
   let buybackPool = 13456
+
+  let chartData = [
+    { title: 'Remaining circulating supply', number: remainingSupply },
+    { title: 'BORG staked', number: coinsStaked },
+    { title: 'BORG in Yield', number: coinsYeild },
+    { title: 'Circulating supply burned', number: coinsBurned },
+    { title: 'BORG in buyback pool', number: buybackPool }
+  ];
 
   return (
 
@@ -53,6 +60,10 @@ const Home: NextPage = () => {
             { icon: 'buyback', title: 'BORG in buyback pool', number: buybackPool },
           ]}
         />
+      </Block>
+
+      <Block width="medium">
+        <DonutChart data={chartData} />
       </Block>
     </SiteContainer>
 

@@ -1,23 +1,20 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const BASE_URL = 'https://api.coingecko.com/api/v3'
-const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API
+const BASE_URL = 'https://api.coingecko.com/api/v3';
+const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API;
 
-export const getBorgMarketData = async () => {
+export const getTokenDetails = async () => {
   try {
-    const response = await axios.get(`${ BASE_URL }/coins/swissborg/market_chart`, {
-      params: {
-        vs_currency: 'usd',
-        days: '1',
-      },
+    const response = await axios.get(`${BASE_URL}/coins/swissborg`, {
       headers: {
-        'Authorization': `Bearer ${ API_KEY }`
+        'Authorization': `Bearer ${API_KEY}`
       }
-    })
+    });
 
+    // Return the complete data object
     return response.data;
   } catch (error) {
-    console.error('Error fetching Ethereum market data:', error)
+    console.error('Error fetching Swissborg details:', error);
     throw error;
   }
 };
