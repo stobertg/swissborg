@@ -7,7 +7,9 @@ const HeroWrap = styled('div', {
 })
 
 const HeroContent = styled('div', {
-
+  position: 'relative',
+  width: '100%',
+  '> *:not(:last-child)': { marginBottom: 50 }
 })
 
 const HeroTitle = styled('div', {
