@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
 
@@ -26,10 +26,9 @@ const Button = styled('button', {
   padding: '12px 0',
   textTransform: 'uppercase',
   transition: '$s1',
+  '&:hover': { background: '$buttonHover' },
 
-  '&:hover': { 
-    background: '$buttonHover'
-  },
+  // Here we support the 
 
   variants: {
     active: { 
@@ -44,11 +43,9 @@ const Button = styled('button', {
 // -------------- Typescript declarations -------------- //
 
 interface ButtonsProps {
-  currentData: string;
-  setCurrentData: (timeFrame: string) => void;
-  buttons: {
-    title: string;
-  }[];
+  currentData: string
+  setCurrentData: ( timeFrame: string ) => void
+  buttons: { title: string }[]
 }
 
 // ---------- This is the end of declarations ---------- //

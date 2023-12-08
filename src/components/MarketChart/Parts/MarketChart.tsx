@@ -24,7 +24,9 @@ export const BorgChart = ({
   return(
 
     <ChartWrap>
-      { chartData && ( <BorgChartData {...{ chartData, currentData }} /> )}
+      { chartData && ( 
+        <BorgChartData {...{ chartData, currentData }} /> 
+      )}
     </ChartWrap>
 
   )

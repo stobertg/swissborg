@@ -41,7 +41,7 @@ const Home: NextPage = () => {
           chartData={ chartData }
           currentData={ currentData }
           setCurrentData={ setCurrentData }
-          marketTimeFrames={[
+          chartTimeFrames={[
             { title: '24h' },
             { title: '1m' },
             { title: '1y' },

@@ -35,7 +35,7 @@ interface HeroProps {
   chartData: any
   currentData: any
   setCurrentData: any
-  marketTimeFrames: { title: string }[]
+  chartTimeFrames: { title: string }[]
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -46,7 +46,7 @@ export const Hero = ({
     chartData,
     currentData,
     setCurrentData,
-    marketTimeFrames
+    chartTimeFrames
   }:HeroProps) => {
 
   return(
@@ -58,7 +58,7 @@ export const Hero = ({
           <Heading htag="2" align="center" size="l3" title={ subTitle } />
         </HeroTitle>
 
-        <MarketChart {...{ marketTimeFrames, chartData, currentData, setCurrentData }} />
+        <MarketChart {...{ chartTimeFrames, chartData, currentData, setCurrentData }} />
       </HeroContent>
     </HeroWrap>
 
