@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { getTokenDetails } from './api/coinGecko'
 import { getBorgMarketSupply } from './api/supply'
+import { borgChartData } from '@lib'
 
 const Home: NextPage = () => {
   const [supplyInfo, setSupplyInfo] = useState({ circulatingSupply: 0, maxSupply: 0 });
+  const chartData = borgChartData()
+  const [ currentData, setCurrentData ] = useState('24h')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-      
         const data = await getBorgMarketSupply();
         console.log( data )
         setSupplyInfo(data as any);
@@ -30,14 +31,6 @@ const Home: NextPage = () => {
   let coinsBurned = 9901614.29
   let buybackPool = 13456
 
-  let chartData = [
-    { title: 'Remaining circulating supply', number: remainingSupply },
-    { title: 'BORG staked', number: coinsStaked },
-    { title: 'BORG in Yield', number: coinsYeild },
-    { title: 'Circulating supply burned', number: coinsBurned },
-    { title: 'BORG in buyback pool', number: buybackPool }
-  ];
-
   return (
 
     <SiteContainer>
@@ -45,13 +38,28 @@ const Home: NextPage = () => {
         <Hero 
           title="BORG Token Metrics"
           subTitle="Deep-dive into the statistics of BORG and the mechanics of the full SwissBorg Ecosystem."
+          chartData={ chartData }
+          currentData={ currentData }
+          setCurrentData={ setCurrentData }
+          marketTimeFrames={[
+            { title: '24h' },
+            { title: '1m' },
+            { title: '1y' },
+            { title: 'all' }
+          ]}
         />
       </Block>
 
       <Block width="medium">
         <SupplyChart 
           title="Breakdown of BORG&apos;s circulating supply"
-          chartData={ chartData }
+          chartData={[
+            { title: 'Remaining circulating supply', number: remainingSupply },
+            { title: 'BORG staked', number: coinsStaked },
+            { title: 'BORG in Yield', number: coinsYeild },
+            { title: 'Circulating supply burned', number: coinsBurned },
+            { title: 'BORG in buyback pool', number: buybackPool }
+          ]}
           stats={[
             { icon: 'token', title: 'Remaining circulating supply', number: remainingSupply },
             { icon: 'diamond', title: 'BORG staked', number: coinsStaked, percentage: stakedPercentage },

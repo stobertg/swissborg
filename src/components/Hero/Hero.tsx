@@ -32,13 +32,21 @@ const HeroTitle = styled('div', {
 interface HeroProps {
   title: string
   subTitle: string
+  chartData: any
+  currentData: any
+  setCurrentData: any
+  marketTimeFrames: { title: string }[]
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const Hero = ({ 
     title, // Required - For the main title of the site
-    subTitle // Required - For the subtitle of the site, below the main title
+    subTitle, // Required - For the subtitle of the site, below the main title
+    chartData,
+    currentData,
+    setCurrentData,
+    marketTimeFrames
   }:HeroProps) => {
 
   return(
@@ -50,7 +58,7 @@ export const Hero = ({
           <Heading htag="2" align="center" size="l3" title={ subTitle } />
         </HeroTitle>
 
-        <MarketChart />
+        <MarketChart {...{ marketTimeFrames, chartData, currentData, setCurrentData }} />
       </HeroContent>
     </HeroWrap>
 

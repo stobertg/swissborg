@@ -5,12 +5,14 @@ import { borgChartData } from '@lib'
 // -------------- Typescript declarations -------------- //
 
 interface ChartProps {
-
+  marketTimeFrames: {
+    title: string
+  }[]
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const MarketChart = ({}:ChartProps) => {
+export const MarketChart = ({ marketTimeFrames }:ChartProps) => {
   const chartData = borgChartData()
   const [ currentData, setCurrentData ] = useState('24h')
 
@@ -27,12 +29,7 @@ export const MarketChart = ({}:ChartProps) => {
       <TimeButtons 
         currentData={ currentData } 
         setCurrentData={ setCurrentData }
-        buttons={[
-          { title: '24h' },
-          { title: '1m' },
-          { title: '1y' },
-          { title: 'all' }
-        ]}
+        buttons={ marketTimeFrames }
       />
     </ChartWrap>
 
