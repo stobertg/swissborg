@@ -5,7 +5,7 @@ import { Options } from './'
 // -------------- Typescript declarations -------------- //
 
 interface DataPoint {
-  [key: number]: number
+  [ key: number ]: number
 }
 
 interface ChartData {
@@ -27,26 +27,26 @@ export const BorgChartData = ({
     currentData 
   }: NewChartComponentProps) => {
 
-  const createDataset = (dataPoints: DataPoint[]) => ({
-    label: `Price (${currentData})`,
-    data: dataPoints.map((p: DataPoint) => p[1]),
-    borderColor: 'rgb(1, 195, 141)',
+  const createDataset = ( dataPoints: DataPoint[] ) => ({
+    label: `Price (${ currentData })`,
+    data: dataPoints.map(( p: DataPoint ) => p[ 1 ]),
+    borderColor: 'rgb( 1, 195, 141 )',
     fill: true,
     pointRadius: 0,
     tension: 0.5,
-    backgroundColor: function(context: any) {
+    backgroundColor: function( context: any ) {
       const chart = context.chart
       const { ctx, chartArea } = chart
 
-      if (!chartArea) {
+      if ( !chartArea ) {
         return null
       }
 
-      const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
-      gradient.addColorStop(1, 'rgba(1, 195, 141, 0.4)')
-      gradient.addColorStop(0, 'rgba(1, 195, 141, 0)')
+      const gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
+      gradient.addColorStop( 1, 'rgba( 1, 195, 141, 0.4 )' )
+      gradient.addColorStop( 0, 'rgba( 1, 195, 141, 0 )' )
 
-      return gradient;
+      return gradient
     },
   });
 

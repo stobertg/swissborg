@@ -36,6 +36,9 @@ const TokenWrap = styled('div', {
   position: 'relative'
 })
 
+// For the container of the token icons, holind the USD and SwissBorg tokens
+// This has the USD fiat icon on the left of the container and the SwissBorg token icon on teh right
+
 const Tokens = styled('div', {
   display: 'flex',
   flexDirection: 'row',
@@ -47,6 +50,9 @@ const Tokens = styled('div', {
 const Token = styled('div', {
 
 })
+
+// For the container of the right arrow in between the tokens
+// This contains the arrow in a circled black container representing the vs to the USD
 
 const Divider = styled('div', {
   display: 'flex',
@@ -61,14 +67,21 @@ const Divider = styled('div', {
   img: { width: '50%' }
 })
 
+// For the container of the titles to the right of the token icons
+// This contains the USD value on top and the percentage change on the bottom of the container
+
 const TokenTitle = styled('div', {
   position: 'relative',
   '> *:not(:last-child)': { marginBottom: 2 }
 })
 
+// -------------- Typescript declarations -------------- //
+
 interface HeaderProps {
 
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const ChartHeader = ({}:HeaderProps) => {
   return(
