@@ -7,7 +7,7 @@ const HeaderWrap = styled('div', {
   width: '100%',
   background: '$darkGray',
   borderRadius: '$r0 $r0 0 0',
-  borderBottom: '1px solid $gray'
+  borderBottom: '1px solid $borderAlt'
 })
 
 const HeaderContent = styled('div', {

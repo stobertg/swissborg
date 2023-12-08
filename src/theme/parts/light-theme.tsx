@@ -3,5 +3,6 @@ export const lightThemeColors = {
   brandPrimary: '$green',
   textPrimary: '$black',
   textSecondary: '$green',
-  border: '$gray'
+  border: '$gray',
+  borderAlt: '$midGray'
 }

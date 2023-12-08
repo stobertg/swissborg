@@ -42,23 +42,34 @@ export const getBorgMarketSupply = async () => {
     const circulatingSupply = detailResponse.data.market_data.circulating_supply;
     const maxSupply = detailResponse.data.market_data.max_supply;
 
-    // Fetch historical market data for price chart
-    const marketChartUrl = `${BASE_URL}/coins/swissborg/market_chart?vs_currency=usd&days=max`;
-    const marketChartResponse = await axios.get(marketChartUrl, {
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`
-      }
-    });
+    // Function to fetch market data for different time frames
+    const fetchMarketData = async (days:any) => {
+      const marketChartUrl = `${BASE_URL}/coins/swissborg/market_chart?vs_currency=usd&days=${days}`;
+      const response = await axios.get(marketChartUrl, {
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`
+        }
+      });
+      return response.data.prices; // Array of [timestamp, price]
+    };
 
-    const prices = marketChartResponse.data.prices; // Array of [timestamp, price]
+    // Fetch market data for different time frames
+    const prices24h = await fetchMarketData('1');
+    const prices1m = await fetchMarketData('30');
+    const prices1y = await fetchMarketData('365');
+    const pricesAll = await fetchMarketData('max'); 
 
     return {
       circulatingSupply,
       maxSupply,
-      prices
+      prices24h,
+      prices1m,
+      prices1y,
+      pricesAll
     };
   } catch (error) {
     console.error('Error fetching Swissborg details and market data:', error);
     throw error;
   }
 };
+
