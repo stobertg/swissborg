@@ -54,9 +54,9 @@ interface BlockProps {
 // ---------- This is the end of declarations ---------- //
 
 export const Block = ({ 
-    width,
-    bgColor,
-    children 
+    width, // Optional - For the width of the content
+    bgColor, // Optional - For the background color of the block content, spanning 100vw
+    children // Required - For the content within the block
   }:BlockProps) => {
 
   return(

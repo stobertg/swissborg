@@ -98,12 +98,16 @@ const GridWrap = styled('div', {
       12: { '@mobile': { gridTemplateColumns: 'repeat(12, 1fr)' }}
     },
 
+    // For the gap between each of the columns within the grid
+
     columnGap: {
       'l0': { columnGap: 20 },
       'l1': { columnGap: 40 },
       'l2': { columnGap: 60 },
       'l3': { columnGap: 80 }
     },
+
+    // For the alignment of the content within the grid
 
     verticalAlignment: {
       center: {

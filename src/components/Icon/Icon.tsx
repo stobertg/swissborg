@@ -23,6 +23,9 @@ const IconWrap = styled('div', {
     fill: 'CurrentColor'
   },
 
+  // For the support of the different sizes of the icon - by default, the icon has a width of 48 
+  // We add support for instances where the icons need to be smaller or larger than the default
+
   variants: {
     size: {
       l0: { width: 16, height: 16 },
@@ -41,12 +44,18 @@ interface IconProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const Icon = ({ icon, size }: IconProps ) => {
+export const Icon = ({ 
+    icon, // Required - For the icon in the component
+    size // Optional - For the size of the icon
+  }: IconProps ) => {
   
   return(
 
     <IconWrap {...{ size }}>
-      <img src={`/global/icons/individual/${ icon }.svg`} alt={ `${ icon } icon` } />
+      <img 
+        src={`/global/icons/individual/${ icon }.svg`} 
+        alt={ `${ icon } icon` } 
+      />
     </IconWrap>
     
   )

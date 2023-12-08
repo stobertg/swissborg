@@ -2,9 +2,16 @@ import React from 'react'
 import { styled } from '@theme'
 import { Heading, MarketChart } from '@components'
 
-const HeroWrap = styled('div', {
+// For the master container of the hero component
+// This is on the top of the site, with the title, subtitle, and the chart on the bottom of the container
 
+const HeroWrap = styled('div', {
+  position: 'relative',
+  width: '100%'
 })
+
+// For the container of all of the content wihtin the master container
+// This holds the title and subtitle on the top and the chart on the bottom of the container
 
 const HeroContent = styled('div', {
   position: 'relative',
@@ -12,33 +19,38 @@ const HeroContent = styled('div', {
   '> *:not(:last-child)': { marginBottom: 50 }
 })
 
+// For the container of the titles on the top of the container 
+// This holds the main title on the top and the subtitle below
+
 const HeroTitle = styled('div', {
   position: 'relative',
   width: '100%'
 })
 
-const HeroChart = styled('div', {
-
-})
+// -------------- Typescript declarations -------------- //
 
 interface HeroProps {
   title: string
   subTitle: string
 }
 
-export const Hero = ({ title, subTitle }:HeroProps) => {
+// ---------- This is the end of declarations ---------- //
+
+export const Hero = ({ 
+    title, // Required - For the main title of the site
+    subTitle // Required - For the subtitle of the site, below the main title
+  }:HeroProps) => {
+
   return(
 
     <HeroWrap>
       <HeroContent>
         <HeroTitle>
-          <Heading bold align="center" size="l5" {...{ title }} />
-          <Heading align="center" size="l3" title={ subTitle } />
+          <Heading bold htag="1" align="center" size="l5" {...{ title }} />
+          <Heading htag="2" align="center" size="l3" title={ subTitle } />
         </HeroTitle>
 
-        <HeroChart>
-          <MarketChart />
-        </HeroChart>
+        <MarketChart />
       </HeroContent>
     </HeroWrap>
 
