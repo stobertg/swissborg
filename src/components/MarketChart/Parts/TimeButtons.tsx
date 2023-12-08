@@ -53,15 +53,19 @@ interface ButtonsProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const TimeButtons = ({ currentData, setCurrentData, buttons }: ButtonsProps) => {
+export const TimeButtons = ({ 
+    currentData, 
+    setCurrentData, 
+    buttons 
+  }: ButtonsProps) => {
+
   return (
     <ButtonWrap>
-      {buttons.map((button, i) => (
+      { buttons.map(( button, i ) => (
         <Button
-          key={`button-${i}`}
-          onClick={() => setCurrentData(button.title)}
-          // Optionally, you can add active styling based on the currentData
-          active={currentData === button.title}
+          key={`button-${ i }`}
+          onClick={ () => setCurrentData( button.title ) }
+          active={ currentData === button.title }
         >
           <Heading size="l0" title={button.title} />
         </Button>

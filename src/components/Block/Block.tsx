@@ -1,9 +1,15 @@
 import React from 'react'
 import { styled } from '@theme'
 
+// For the master container of the block component
+// This is a foundational component used as a automated block that deals with things such as width and background color
+
 const BlockWrap = styled('div', {
   position: 'relative',
   width: '100%',
+
+  // Here we account for background support of the block component
+  // This is set to take up the full width of the site ( 100vw ) while the content width inside can be variabled
 
   variants: {
     bgColor: {
@@ -15,6 +21,9 @@ const BlockWrap = styled('div', {
   }
 })
 
+// For the container of the all of the content within the master container
+// This is for the structure of the content and handle different width options for that content
+
 const BlockContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -23,11 +32,13 @@ const BlockContent = styled('div', {
   margin: '0 auto',
   padding: '100px 0',
 
+  // Here we account for the different content widths supported
+  // This is for the content that is needed to be smaller or larger, depending on the context
+
   variants: {
     width: {
       small: { maxWidth: 780, width: '90%' },
-      medium: { maxWidth: 1180, width: '90%' },
-      large: {}
+      medium: { maxWidth: 1180, width: '90%' }
     }
   }
 })
@@ -35,7 +46,7 @@ const BlockContent = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface BlockProps {
-  width?: 'small' | 'medium' | 'large'
+  width?: 'small' | 'medium'
   bgColor?: 'darkGradient'
   children: React.ReactNode
 }

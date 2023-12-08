@@ -64,5 +64,5 @@ export const BorgChartData: React.FC<NewChartComponentProps> = ({ chartData, cur
     datasets: [currentDataset()]
   };
 
-  return <Line data={chartDisplayData} options={Options} />
+  return <Line data={ chartDisplayData } options={ Options } />
 }
