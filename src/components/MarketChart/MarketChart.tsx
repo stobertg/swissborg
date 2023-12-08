@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { ChartHeader } from './Parts/Header'
+import { ChartHeader, TimeButtons } from './Parts'
+import { Options } from './DataConfig'
 import { Line } from 'react-chartjs-2'
 import { getBorgMarketSupply } from '../../pages/api/supply'
 import { ChartOptions } from 'chart.js'
 import 'chart.js/auto'
+
+// For the master container of the main market chart in the hero section
+// This contains the market data for the BORG coin vs USD with the ability to see the data for 24hrs, 1 month, 1 year, and all
 
 const ChartWrap = styled('div', {
   position: 'relative',
@@ -12,7 +16,9 @@ const ChartWrap = styled('div', {
   width: '90%',
   margin: '0 auto',
   borderRadius: '$r0',
-  boxShadow: '0 10px 20px rgba( 0,0,0, 0.3 )'
+  boxShadow: '0 10px 20px rgba( 0,0,0, 0.3 )',
+  background: '$bgPrimary',
+  overflow: 'hidden'
 })
 
 const ChartContent = styled('div', {
@@ -24,9 +30,8 @@ const ChartMain = styled('div', {
   background: '$black',
 })
 
-const TimeFrameButton = styled('button', {
-  
-})
+
+
 
 interface ChartProps {
 
@@ -59,10 +64,23 @@ export const MarketChart = ({}:ChartProps) => {
     label: `Price (${currentData})`,
     data: dataPoints?.map((p: [number, number]) => p[1]) || [],
     borderColor: 'rgb(1, 195, 141)',
-    backgroundColor: 'rgba( 1, 195, 141, 0.5 )',
     fill: true,
     pointRadius: 0,
     tension: 0.5,
+    backgroundColor: function(context:any) {
+      const chart = context.chart;
+      const { ctx, chartArea } = chart;
+
+      if (!chartArea) {
+          return null;
+      }
+
+      const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+      gradient.addColorStop(1, 'rgba(1, 195, 141, 0.4)')
+      gradient.addColorStop(0, 'rgba(1, 195, 141, 0)')
+
+      return gradient;
+    },
   })
 
   const currentDataset = () => {
@@ -87,80 +105,25 @@ export const MarketChart = ({}:ChartProps) => {
     datasets: [currentDataset()]
   };
 
-  const options: ChartOptions<'line'> = {
-    maintainAspectRatio: false,
-    layout: {
-      padding: { 
-        top: 32
-      }
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          maxTicksLimit: 6, 
-          autoSkip: true,
-          align: 'inner',
-          color: '#fff',
-          padding: 10
-        },
-        afterBuildTicks: function(scale) {
-          let ticks = scale.ticks
-  
-          if (ticks.length > 6) {
-            const interval = Math.floor(ticks.length / 5)
-            
-            const selectedTicks = [
-              ticks[0],
-              ...Array.from({ length: 4 }, (_, i) => ticks[(i + 1) * interval]),
-              ticks[ticks.length - 1]
-            ]
-  
-            scale.ticks = selectedTicks
-          }
-        }
-      },
-      y: {
-        position: 'right',
-        border: {
-          display: false
-        },
-        grid: {
-          color: 'rgba(255, 255, 255, 0.05)',
-        },
-        ticks: {
-          maxTicksLimit: 5, 
-          mirror: true,
-          align: 'center',
-          color: '#fff',
-          padding: 0
-        }
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-    }
-  }
-
   return(
 
     <ChartWrap>
       <ChartContent>
         <ChartHeader />
         <ChartMain>
-          {/* { chartData && <Line data={ chartData } options={ options } /> } */}
-          { chartData && <Line data={ chartDisplayData } options={ options } /> }
+          { chartData && 
+            <Line data={ chartDisplayData } options={ Options } /> 
+          }
         </ChartMain>
-        <div>
-          <TimeFrameButton onClick={() => selectTimeFrame('24h')}>24h</TimeFrameButton>
-          <TimeFrameButton onClick={() => selectTimeFrame('1m')}>1m</TimeFrameButton>
-          <TimeFrameButton onClick={() => selectTimeFrame('1y')}>1y</TimeFrameButton>
-          <TimeFrameButton onClick={() => selectTimeFrame('24h')}>All</TimeFrameButton>
-        </div>
+
+        <TimeButtons 
+          buttons={[
+            { title: '24h', onClick: () => selectTimeFrame('24h')},
+            { title: '1m', onClick: () => selectTimeFrame('1m')},
+            { title: '1y', onClick: () => selectTimeFrame('1y')},
+            { title: 'all', onClick: () => selectTimeFrame('all')}
+          ]}
+        />
       </ChartContent>
     </ChartWrap>
 

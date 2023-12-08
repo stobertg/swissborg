@@ -5,7 +5,6 @@ import { Heading, Icon } from '@components'
 const HeaderWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  background: '$darkGray',
   borderRadius: '$r0 $r0 0 0',
   borderBottom: '1px solid $borderAlt'
 })
