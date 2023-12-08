@@ -85,7 +85,10 @@ export const Stats = ({ stats }:StatProps) => {
                 <Icon icon={ stat.icon } />
 
                 <StatMain>
-                  <Heading size="l2" title={ stat.title } />
+                  <Heading 
+                    size="l2" 
+                    title={ stat.title } 
+                  />
 
                   <StatNumber>
                     <Heading 

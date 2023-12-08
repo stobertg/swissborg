@@ -2,6 +2,8 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import { Options } from './'
 
+// -------------- Typescript declarations -------------- //
+
 interface DataPoint {
   [key: number]: number
 }
@@ -18,7 +20,13 @@ interface NewChartComponentProps {
   currentData: string
 }
 
-export const BorgChartData: React.FC<NewChartComponentProps> = ({ chartData, currentData }) => {
+// ---------- This is the end of declarations ---------- //
+
+export const BorgChartData = ({ 
+    chartData, 
+    currentData 
+  }: NewChartComponentProps) => {
+
   const createDataset = (dataPoints: DataPoint[]) => ({
     label: `Price (${currentData})`,
     data: dataPoints.map((p: DataPoint) => p[1]),
@@ -43,26 +51,28 @@ export const BorgChartData: React.FC<NewChartComponentProps> = ({ chartData, cur
   });
 
   const currentDataset = () => {
-    if (!chartData) return createDataset([])
+    if ( !chartData ) return createDataset([])
 
-    switch (currentData) {
-      case '24h':
-        return createDataset(chartData.prices24h)
-      case '1m':
-        return createDataset(chartData.prices1m)
-      case '1y':
-        return createDataset(chartData.prices1y)
-      case 'all':
-        return createDataset(chartData.pricesAll)
-      default:
-        return createDataset(chartData.prices24h)
+    switch ( currentData ) {
+      case '24h': return createDataset( chartData.prices24h )
+      case '1m': return createDataset( chartData.prices1m )
+      case '1y': return createDataset( chartData.prices1y )
+      case 'all': return createDataset( chartData.pricesAll )
+      default: return createDataset( chartData.prices24h )
     }
   };
 
   const chartDisplayData = {
-    labels: chartData ? chartData.prices24h.map((p: DataPoint) => new Date(p[0]).toLocaleDateString()) : [],
-    datasets: [currentDataset()]
+    labels: chartData ? chartData.prices24h.map(( p: DataPoint ) => new Date(p[0]).toLocaleDateString()) : [],
+    datasets: [ currentDataset() ]
   };
 
-  return <Line data={ chartDisplayData } options={ Options } />
+  return ( 
+  
+    <Line 
+      data={ chartDisplayData } 
+      options={ Options } 
+    /> 
+    
+  )
 }

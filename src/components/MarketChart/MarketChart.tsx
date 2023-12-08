@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { ChartWrap, ChartHeader, BorgChart, TimeButtons } from './Parts'
 import { borgChartData } from '@lib'
 
+// -------------- Typescript declarations -------------- //
+
 interface ChartProps {
 
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const MarketChart = ({}:ChartProps) => {
   const chartData = borgChartData()
