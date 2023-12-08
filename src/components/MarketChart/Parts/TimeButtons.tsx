@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
 
@@ -28,42 +28,44 @@ const Button = styled('button', {
   transition: '$s1',
 
   '&:hover': { 
-    background: '$gray'
+    background: '$buttonHover'
   },
 
   variants: {
     active: { 
-      true: { background: '$gray' }
+      true: { 
+        background: '$buttonHover',
+        color: '$textSecondary'
+      }
     }
   }
 })
 
 // -------------- Typescript declarations -------------- //
 
-interface ButtonProps {
+interface ButtonsProps {
+  currentData: string;
+  setCurrentData: (timeFrame: string) => void;
   buttons: {
-    title: string
-    onClick: React.MouseEventHandler<HTMLButtonElement>
-  }[]
+    title: string;
+  }[];
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const TimeButtons = ({ buttons }:ButtonProps) => {
-  return(
-
+export const TimeButtons = ({ currentData, setCurrentData, buttons }: ButtonsProps) => {
+  return (
     <ButtonWrap>
-      { buttons.map(( button, i ) => (
-
-        <Button 
-          key={`button-${ i }`} 
-          onClick={ button.onClick }
+      {buttons.map((button, i) => (
+        <Button
+          key={`button-${i}`}
+          onClick={() => setCurrentData(button.title)}
+          // Optionally, you can add active styling based on the currentData
+          active={currentData === button.title}
         >
-          <Heading size="l0" title={ button.title } />
+          <Heading size="l0" title={button.title} />
         </Button>
-
       ))}
     </ButtonWrap>
-
-  )
-}
+  );
+};

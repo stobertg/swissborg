@@ -8,5 +8,7 @@ export const lightThemeColors = {
   bgPrimary: '$darkGray',
 
   border: '$gray',
-  borderAlt: '$midGray'
+  borderAlt: '$midGray',
+
+  buttonHover: '$midDarkGray'
 }

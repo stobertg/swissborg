@@ -1,31 +1,30 @@
-import { useState, useEffect } from 'react';
-import { getBorgMarketSupply } from '../pages/api/supply';
+import { useState, useEffect } from 'react'
+import { getBorgMarketSupply } from '../pages/api/supply'
 
 interface ChartData {
-  // Define the structure of the chart data here
+  prices24h: [number, number][]
+  prices1m: [number, number][]
+  prices1y: [number, number][]
+  pricesAll: [number, number][]
 }
 
-export const BorgMarketData = () => {
-  // Specify the types for your state
-  const [chartData, setChartData] = useState<ChartData | null>(null);
-  const [error, setError] = useState<Error | null>(null);
+export const useChartData = (): ChartData | null => {
+  const [ chartData, setChartData ] = useState<ChartData | null>( null )
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getBorgMarketSupply();
-        setChartData(data);
-      } catch (error: any) {
-        console.error("Error fetching chart data:", error);
-        setError(error);
+        const data = await getBorgMarketSupply()
+        if ( data ) {
+          setChartData( data as any )
+        }
+      } catch (error) {
+        console.error( "Error fetching chart data:", error ) 
       }
     };
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  return { chartData, error };
-};
-
-// If you're exporting a hook, it should be named useChartData
-export const useChartData = BorgMarketData;  // or you might want to refactor the function name itself
+  return chartData
+}
