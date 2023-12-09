@@ -1,8 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
+import { List } from '@components'
 import { StatBase } from './Parts'
-import { List, Heading, Icon } from '@components'
-import { formatNumberWithCommas, formatToTwoDecimals } from '@lib'
 
 // For the master container of the stat list
 // This components holds all of the data

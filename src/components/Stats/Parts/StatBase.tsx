@@ -25,12 +25,18 @@ const StatContent = styled('div', {
   '> *:not(:last-child)': { marginRight: 12 }
 })
 
+// This holds all of the text content within the stats container
+// We set this up so that on tablet, the icon can be aligned by itself on the left of the container
+
 const StatMain = styled('div', {
   display: 'flex',
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
   position: 'relative',
+
+  // Here we set the rerendering on tablet breakpoints - This will contain the icon on the left and the text to the right
+  // We reverse the orientation here - number on top, title below section below
 
   '@tablet': {
     flexDirection: 'column-reverse',
@@ -51,12 +57,16 @@ const StatNumber = styled('div', {
   textAlign: 'right'
 })
 
+// -------------- Typescript declarations -------------- //
+
 interface StatProps {
   icon: string
   title: string
   statNumber: number
   statPercentage?: number
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const StatBase = ({
     icon, 
