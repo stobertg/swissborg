@@ -78,20 +78,21 @@ const TokenTitle = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface HeaderProps {
-
-}
+  borgTokenIcon: string
+  borgTokenIconAlt: string
+} 
 
 // ---------- This is the end of declarations ---------- //
 
-export const ChartHeader = ({}:HeaderProps) => {
+export const ChartHeader = ({ borgTokenIcon, borgTokenIconAlt }:HeaderProps) => {
   return(
 
     <HeaderWrap>
       <HeaderContent>
         <TokenWrap>
           <Tokens>
-            <Token><Icon size="l2" icon="fiat" /></Token>
-            <Token><Icon size="l2" icon="fiat" /></Token>
+            <Icon size="l2" icon="fiat" />
+            <Token><img src={ borgTokenIcon } alt={ borgTokenIconAlt } /></Token>
           </Tokens>
           <Divider><Icon size="l1" icon="arrow-right" /></Divider>
         </TokenWrap>

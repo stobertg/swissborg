@@ -35,7 +35,7 @@ export const getBorgMarketSupply = async () => {
     // Fetch details including circulating and max supply
     const detailResponse = await axios.get(`${BASE_URL}/coins/swissborg`, {
       headers: {
-        'Authorization': `Bearer ${API_KEY}`
+        'Authorization': `Bearer ${ API_KEY }`
       }
     });
 
@@ -44,7 +44,7 @@ export const getBorgMarketSupply = async () => {
 
     // Function to fetch market data for different time frames
     const fetchMarketData = async (days:any) => {
-      const marketChartUrl = `${BASE_URL}/coins/swissborg/market_chart?vs_currency=usd&days=${days}`;
+      const marketChartUrl = `${ BASE_URL }/coins/swissborg/market_chart?vs_currency=usd&days=${ days }`;
       const response = await axios.get(marketChartUrl, {
         headers: {
           'Authorization': `Bearer ${API_KEY}`
@@ -60,6 +60,7 @@ export const getBorgMarketSupply = async () => {
     const pricesAll = await fetchMarketData('max'); 
 
     return {
+      metadata: detailResponse.data,
       circulatingSupply,
       maxSupply,
       prices24h,

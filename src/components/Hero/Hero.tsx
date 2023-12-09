@@ -32,6 +32,8 @@ const HeroTitle = styled('div', {
 interface HeroProps {
   title: string
   subTitle: string
+  borgTokenIcon: string
+  borgTokenIconAlt: string
   chartData: any
   currentData: any
   setCurrentData: any
@@ -43,6 +45,8 @@ interface HeroProps {
 export const Hero = ({ 
     title, // Required - For the main title of the site
     subTitle, // Required - For the subtitle of the site, below the main title
+    borgTokenIcon,
+    borgTokenIconAlt,
     chartData,
     currentData,
     setCurrentData,
@@ -58,7 +62,15 @@ export const Hero = ({
           <Heading htag="2" align="center" size="l3" title={ subTitle } />
         </HeroTitle>
 
-        <MarketChart {...{ chartTimeFrames, chartData, currentData, setCurrentData }} />
+        <MarketChart {...{ 
+            borgTokenIcon, 
+            borgTokenIconAlt,
+            chartTimeFrames, 
+            chartData, 
+            currentData, 
+            setCurrentData 
+          }} 
+        />
       </HeroContent>
     </HeroWrap>
 

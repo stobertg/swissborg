@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
 import { getBorgMarketSupply } from './api/supply'
@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const [supplyInfo, setSupplyInfo] = useState({ circulatingSupply: 0, maxSupply: 0 });
   const chartData = borgChartData()
   const [ currentData, setCurrentData ] = useState('24h')
+  const borgIconUrl = supplyInfo.metadata?.image?.large
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
         <Hero 
           title="BORG Token Metrics"
           subTitle="Deep-dive into the statistics of BORG and the mechanics of the full SwissBorg Ecosystem."
+          borgTokenIcon={ borgIconUrl }
           chartData={ chartData }
           currentData={ currentData }
           setCurrentData={ setCurrentData }
