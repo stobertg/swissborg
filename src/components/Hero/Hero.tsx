@@ -34,6 +34,9 @@ interface HeroProps {
   subTitle: string
   borgTokenIcon: string
   borgTokenIconAlt: string
+  currentPrice: number
+  percentageChange: number
+  timeFrame: string
   chartData: any
   currentData: any
   setCurrentData: any
@@ -47,6 +50,9 @@ export const Hero = ({
     subTitle, // Required - For the subtitle of the site, below the main title
     borgTokenIcon,
     borgTokenIconAlt,
+    currentPrice,
+    percentageChange,
+    timeFrame,
     chartData,
     currentData,
     setCurrentData,
@@ -65,6 +71,9 @@ export const Hero = ({
         <MarketChart {...{ 
             borgTokenIcon, 
             borgTokenIconAlt,
+            currentPrice,
+            percentageChange,
+            timeFrame,
             chartTimeFrames, 
             chartData, 
             currentData, 

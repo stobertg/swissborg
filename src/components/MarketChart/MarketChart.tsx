@@ -6,6 +6,9 @@ import { ChartWrap, ChartHeader, BorgChart, TimeButtons } from './Parts'
 interface ChartProps {
   borgTokenIcon: string
   borgTokenIconAlt: string
+  currentPrice: number
+  percentageChange: number
+  timeFrame: string
   chartData: any
   currentData: any
   setCurrentData: any
@@ -17,6 +20,9 @@ interface ChartProps {
 export const MarketChart = ({ 
     borgTokenIcon,
     borgTokenIconAlt,
+    currentPrice,
+    percentageChange,
+    timeFrame,
     chartData, // Required - For the API call of the SwissBorg token data
     currentData, // Required - For the default chart value (24hr)
     setCurrentData, // Required - For the ability to change the chart value
@@ -26,7 +32,7 @@ export const MarketChart = ({
   return(
 
     <ChartWrap>
-      <ChartHeader {...{ borgTokenIcon, borgTokenIconAlt }} />
+      <ChartHeader {...{ borgTokenIcon, borgTokenIconAlt, currentPrice, percentageChange, timeFrame }} />
       <BorgChart {...{ chartData, currentData }} />
       <TimeButtons buttons={ chartTimeFrames } {...{ currentData, setCurrentData }} />
     </ChartWrap>

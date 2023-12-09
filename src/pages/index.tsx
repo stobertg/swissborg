@@ -5,10 +5,25 @@ import { getBorgMarketSupply } from './api/supply'
 import { borgChartData } from '@lib'
 
 const Home: NextPage = () => {
-  const [supplyInfo, setSupplyInfo] = useState({ circulatingSupply: 0, maxSupply: 0 });
+  const [ supplyInfo, setSupplyInfo ] = useState({ 
+    circulatingSupply: 0, 
+    maxSupply: 0,
+    metadata: {
+      image: { small: '' },
+      name: '',
+      market_data: { 
+        current_price: { usd: 0 },
+        price_change_percentage_1h_in_currency: { usd: 0 }
+      }
+    }
+  })
   const chartData = borgChartData()
   const [ currentData, setCurrentData ] = useState('24h')
-  const borgIconUrl = supplyInfo.metadata?.image?.large
+  const borgIconUrl = supplyInfo.metadata.image.small
+  const borgIconAlt = supplyInfo.metadata.name
+  const currentPrice = supplyInfo.metadata.market_data.current_price.usd
+  const changePercentage24hr = supplyInfo.metadata.market_data.price_change_percentage_1h_in_currency.usd
+  console.log( changePercentage24hr )
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +55,11 @@ const Home: NextPage = () => {
           title="BORG Token Metrics"
           subTitle="Deep-dive into the statistics of BORG and the mechanics of the full SwissBorg Ecosystem."
           borgTokenIcon={ borgIconUrl }
+          borgTokenIconAlt={ borgIconAlt }
           chartData={ chartData }
+          currentPrice={ currentPrice }
+          percentageChange={ changePercentage24hr }
+          timeFrame="24 Hours"
           currentData={ currentData }
           setCurrentData={ setCurrentData }
           chartTimeFrames={[

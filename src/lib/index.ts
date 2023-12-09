@@ -1,3 +1,5 @@
 export { formatNumberWithCommas } from './utils'
+export { formatToOneDecimal } from './utils'
 export { formatToTwoDecimals } from './utils'
+export { formatToThreeDecimals } from './utils'
 export { useChartData as borgChartData } from './getBorgMarket'

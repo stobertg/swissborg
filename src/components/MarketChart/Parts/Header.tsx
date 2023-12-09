@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading, Icon } from '@components'
+import { formatToOneDecimal, formatToThreeDecimals } from '@lib'
 
 // For the master container of the chart header
 // This sits above the line chart and holds the token vs USD on the left side of the container
@@ -47,8 +48,22 @@ const Tokens = styled('div', {
   '> *:not(:last-child)': { marginRight: 4 }
 })
 
-const Token = styled('div', {
+const TokenHex = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: 29,
+  height: 32,
+  maskImage: 'url(/assets/hex.svg)',
+  maskRepeat: 'no-repeat',
 
+  img: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
 })
 
 // For the container of the right arrow in between the tokens
@@ -61,7 +76,7 @@ const Divider = styled('div', {
   position: 'absolute',
   width: 16,
   height: 16,
-  borderRadius: '40%',
+  borderRadius: '50%',
   background: '$black',
   zIndex: 10,
   img: { width: '50%' }
@@ -80,11 +95,23 @@ const TokenTitle = styled('div', {
 interface HeaderProps {
   borgTokenIcon: string
   borgTokenIconAlt: string
+  currentPrice: number
+  percentageChange: number
+  timeFrame: string
 } 
 
 // ---------- This is the end of declarations ---------- //
 
-export const ChartHeader = ({ borgTokenIcon, borgTokenIconAlt }:HeaderProps) => {
+export const ChartHeader = ({ 
+    borgTokenIcon, 
+    borgTokenIconAlt,
+    currentPrice,
+    percentageChange,
+    timeFrame
+  }:HeaderProps) => {
+
+  let percentageChangeColor = percentageChange < 0 ? 'negative' : 'primary';
+
   return(
 
     <HeaderWrap>
@@ -92,14 +119,22 @@ export const ChartHeader = ({ borgTokenIcon, borgTokenIconAlt }:HeaderProps) => 
         <TokenWrap>
           <Tokens>
             <Icon size="l2" icon="fiat" />
-            <Token><img src={ borgTokenIcon } alt={ borgTokenIconAlt } /></Token>
+            <TokenHex><img src={ borgTokenIcon } alt={ borgTokenIconAlt } /></TokenHex>
           </Tokens>
           <Divider><Icon size="l1" icon="arrow-right" /></Divider>
         </TokenWrap>
         
         <TokenTitle>
-          <Heading size="l1" title="USD 0.188" />
-          <Heading size="l0" color="primary" title="+4.8% 24 Hours" />
+          <Heading 
+            size="l1" 
+            title={ currentPrice !== undefined ? 'USD' + ' ' + formatToThreeDecimals( currentPrice ) : 'N/A' } 
+          />
+
+          <Heading 
+            size="l0" 
+            color={ percentageChangeColor }
+            title={ formatToOneDecimal( percentageChange ) + `% ${ timeFrame } ` }
+          />
         </TokenTitle>
       </HeaderContent>
     </HeaderWrap>

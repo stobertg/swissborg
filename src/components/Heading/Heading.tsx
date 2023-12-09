@@ -27,7 +27,8 @@ const HeadingWrap = styled('div', {
     // By default the color is black, or inherited by the parent container 
 
     color: {
-      primary: { color: '$textSecondary' }
+      primary: { color: '$textSecondary' },
+      negative: { color: '$negative' }
     },
 
     // For the ability to align the heading text in the center of the container
@@ -45,7 +46,7 @@ interface HeadingProps {
   htag?: '1' | '2' | '3' | '4'
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5'
   align?: 'center'
-  color?: 'primary'
+  color?: 'primary' | 'negative'
   bold?: boolean
 }
 
