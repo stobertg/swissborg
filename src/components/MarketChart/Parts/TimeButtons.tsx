@@ -28,7 +28,8 @@ const Button = styled('button', {
   transition: '$s1',
   '&:hover': { background: '$buttonHover' },
 
-  // Here we support the 
+  // Here we support the color change if the button is currently active in the tab-like structure
+  // This will set the background to the hover color and change the text color to the primary brand color
 
   variants: {
     active: { 
@@ -51,21 +52,23 @@ interface ButtonsProps {
 // ---------- This is the end of declarations ---------- //
 
 export const TimeButtons = ({ 
-    currentData, 
-    setCurrentData, 
-    buttons 
+    currentData, // Required - For the data populated in the chart
+    setCurrentData, // Required - For the ability to change the data within the chart
+    buttons // Required - For the buttons containing the time frames a user can choose for the chart data
   }: ButtonsProps) => {
 
   return (
     <ButtonWrap>
       { buttons.map(( button, i ) => (
+
         <Button
           key={`button-${ i }`}
           onClick={ () => setCurrentData( button.title ) }
           active={ currentData === button.title }
         >
-          <Heading size="l0" title={button.title} />
+          <Heading size="l0" title={ button.title } />
         </Button>
+
       ))}
     </ButtonWrap>
   );

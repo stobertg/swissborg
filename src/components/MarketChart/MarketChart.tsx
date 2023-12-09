@@ -18,11 +18,11 @@ interface ChartProps {
 // ---------- This is the end of declarations ---------- //
 
 export const MarketChart = ({ 
-    borgTokenIcon,
-    borgTokenIconAlt,
-    currentPrice,
-    percentageChange,
-    timeFrame,
+    borgTokenIcon, // Required - For the SwissBorg Logo / Token Logo
+    borgTokenIconAlt, // Required - For a11y reader and seo of the token icon
+    currentPrice, // Required - For the current price vs USD
+    percentageChange, // Required - For the current percentage change vs USD
+    timeFrame, // Required - For the time time frame of the percentage change
     chartData, // Required - For the API call of the SwissBorg token data
     currentData, // Required - For the default chart value (24hr)
     setCurrentData, // Required - For the ability to change the chart value

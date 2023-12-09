@@ -48,6 +48,9 @@ const Tokens = styled('div', {
   '> *:not(:last-child)': { marginRight: 4 }
 })
 
+// For the container of the SwissBorg token data taken from the meta data of the api call
+// By default, this is a square icon, so we need to mask it within a hex image to accuratley represent the token branding
+
 const TokenHex = styled('div', {
   display: 'flex',
   justifyContent: 'center',
@@ -57,6 +60,9 @@ const TokenHex = styled('div', {
   height: 32,
   maskImage: 'url(/assets/hex.svg)',
   maskRepeat: 'no-repeat',
+
+  // For the SwissBorg logo to sit within the master container
+  // This will allow for the icon to be positioned in the center of the container and maintain aspect ratio
 
   img: {
     position: 'absolute',
@@ -103,14 +109,12 @@ interface HeaderProps {
 // ---------- This is the end of declarations ---------- //
 
 export const ChartHeader = ({ 
-    borgTokenIcon, 
-    borgTokenIconAlt,
-    currentPrice,
-    percentageChange,
-    timeFrame
+    borgTokenIcon, // Required - For the SwissBorg Logo / Token Logo
+    borgTokenIconAlt, // Required - For a11y reader and seo of the token icon
+    currentPrice, // Required - For the current price vs USD
+    percentageChange, // Required - For the current percentage change vs USD
+    timeFrame // Required - For the time time frame of the percentage change
   }:HeaderProps) => {
-
-  let percentageChangeColor = percentageChange < 0 ? 'negative' : 'primary';
 
   return(
 
@@ -132,7 +136,7 @@ export const ChartHeader = ({
 
           <Heading 
             size="l0" 
-            color={ percentageChangeColor }
+            color={ percentageChange < 0 ? 'negative' : 'primary' }
             title={ formatToOneDecimal( percentageChange ) + `% ${ timeFrame } ` }
           />
         </TokenTitle>
