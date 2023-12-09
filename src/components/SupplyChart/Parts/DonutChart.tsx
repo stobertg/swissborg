@@ -5,23 +5,21 @@ import { customLabel } from './CustomLabels'
 
 // -------------- Typescript declarations -------------- //
 
-interface DataItem {
-  title: string;
-  number: number;
-}
-
 interface ChartProps {
-  data: DataItem[];
+  data: {
+    title: string
+    number: number
+  }[]
 }
 
 // ---------- This is the end of declarations ---------- //
 
 export const DonutChart = ({ data }: ChartProps) => {
   const chartData = {
-    labels: data.map((item: DataItem) => item.title),
+    labels: data.map(( item ) => item.title),
     datasets: [{
       label: 'Supply Data',
-      data: data.map((item: DataItem) => item.number),
+      data: data.map((item ) => item.number),
       borderWidth: 2,
       backgroundColor: [
         'red',

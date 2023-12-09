@@ -4,7 +4,7 @@ import { List } from '@components'
 import { StatBase } from './Parts'
 
 // For the master container of the stat list
-// This components holds all of the data
+// This components holds all of the data of the token on the left of the donut chart
 
 const StatWrap = styled('div', {
   position: 'relative',
