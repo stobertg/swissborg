@@ -116,6 +116,8 @@ export const ChartHeader = ({
     timeFrame // Required - For the time time frame of the percentage change
   }:HeaderProps) => {
 
+  const percentageTitle = formatToOneDecimal( percentageChange ) + `% ${ timeFrame } ` 
+
   return(
 
     <HeaderWrap>
@@ -123,8 +125,14 @@ export const ChartHeader = ({
         <TokenWrap>
           <Tokens>
             <Icon size="l2" icon="fiat" />
-            <TokenHex><img src={ borgTokenIcon } alt={ borgTokenIconAlt } /></TokenHex>
+            <TokenHex>
+              <img 
+                src={ borgTokenIcon } 
+                alt={ borgTokenIconAlt } 
+              />
+            </TokenHex>
           </Tokens>
+
           <Divider><Icon size="l1" icon="arrow-right" /></Divider>
         </TokenWrap>
         
@@ -137,7 +145,7 @@ export const ChartHeader = ({
           <Heading 
             size="l0" 
             color={ percentageChange < 0 ? 'negative' : 'primary' }
-            title={ formatToOneDecimal( percentageChange ) + `% ${ timeFrame } ` }
+            title={ percentageChange > 0 ? '+' + percentageTitle : percentageTitle }
           />
         </TokenTitle>
       </HeaderContent>

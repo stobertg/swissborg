@@ -72,7 +72,13 @@ export const SupplyChart = ({
 
     <ChartWrap>
       <ChartTitle>
-        <Heading htag="2" bold size="l4" align="center" {...{ title }} />
+        <Heading 
+          htag="2" 
+          bold 
+          size="l4" 
+          align="center" 
+          {...{ title }} 
+        />
       </ChartTitle>
 
       <ChartContent>
