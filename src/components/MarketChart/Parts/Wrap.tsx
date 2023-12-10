@@ -7,7 +7,7 @@ import { styled } from '@theme'
 const ChartContain = styled('div', {
   position: 'relative',
   maxWidth: 900,
-  width: '90%',
+  width: '100%',
   margin: '0 auto',
   borderRadius: '$r0',
   boxShadow: '0 10px 20px rgba( 0,0,0, 0.3 )',

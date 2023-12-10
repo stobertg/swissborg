@@ -1,49 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { getBorgMarketSupply } from './api/supply'
-import { borgChartData } from '@lib'
+import { borgTokenData } from '@lib'
 
 const Home: NextPage = () => {
-  const [ supplyInfo, setSupplyInfo ] = useState({ 
-    circulatingSupply: 0, 
-    maxSupply: 0,
-    metadata: {
-      image: { small: '' },
-      name: '',
-      market_data: { 
-        current_price: { usd: 0 },
-        price_change_percentage_1h_in_currency: { usd: 0 }
-      }
-    }
-  })
-  const chartData = borgChartData()
-  const [ currentData, setCurrentData ] = useState('24h')
-  const borgIconUrl = supplyInfo.metadata.image.small
-  const borgIconAlt = supplyInfo.metadata.name
-  const currentPrice = supplyInfo.metadata.market_data.current_price.usd
-  const changePercentage24hr = supplyInfo.metadata.market_data.price_change_percentage_1h_in_currency.usd
-  console.log( changePercentage24hr )
+  const { chartData, supplyInfo } = borgTokenData()
+  const [ currentData, setCurrentData ] = useState( '24h' )
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getBorgMarketSupply();
-        console.log( data )
-        setSupplyInfo(data as any);
-      } catch (error) {
-        console.error('Error fetching supply data:', error);
-      }
-    };
+  const borgIconUrl = supplyInfo?.metadata.image.small || ''
+  const borgIconAlt = supplyInfo?.metadata.name || ''
+  let currentPrice = supplyInfo?.metadata.market_data.current_price.usd || 0
+  let changePercentage24hr = supplyInfo?.metadata.market_data.price_change_percentage_1h_in_currency.usd || 0
+  let changePercentage30d = supplyInfo?.metadata.market_data.price_change_percentage_30d_in_currency.usd || 0
 
-    fetchData();
-  }, [])
-
-  let remainingSupply = supplyInfo.maxSupply - supplyInfo.circulatingSupply
+  let remainingSupply = supplyInfo ? supplyInfo.maxSupply - supplyInfo.circulatingSupply : 0
   let coinsStaked = 179102513
-  let stakedPercentage = ( 179102513 / supplyInfo.circulatingSupply ) * 100
+  let stakedPercentage = supplyInfo ? (coinsStaked / supplyInfo.circulatingSupply) * 100 : 0
   let coinsYeild = 362065045
-  let yeildPercentage = ( 362065045 / supplyInfo.circulatingSupply ) * 100
+  let yeildPercentage = supplyInfo ? (coinsYeild / supplyInfo.circulatingSupply) * 100 : 0
   let coinsBurned = 9901614.29
   let buybackPool = 13456
 
@@ -54,12 +28,22 @@ const Home: NextPage = () => {
         <Hero 
           title="BORG Token Metrics"
           subTitle="Deep-dive into the statistics of BORG and the mechanics of the full SwissBorg Ecosystem."
-          borgTokenIcon={ borgIconUrl }
+          borgTokenIcon={ supplyInfo ? borgIconUrl : '/global/logo/swissborg-logomark.svg' }
           borgTokenIconAlt={ borgIconAlt }
           chartData={ chartData }
           currentPrice={ currentPrice }
-          percentageChange={ changePercentage24hr }
-          timeFrame="24 Hours"
+          percentageChange={ 
+            currentData === '24h' ? changePercentage24hr : 
+            currentData === '1m' ? changePercentage30d : 
+            currentData === '1y' ? changePercentage30d : 
+            changePercentage30d
+          }
+          timeFrame={ 
+            currentData === '24h' ? '24 Hours' :
+            currentData === '1m' ? '1 Month' :
+            currentData === '1y' ? '1 Year' : 
+            'All time' 
+          }
           currentData={ currentData }
           setCurrentData={ setCurrentData }
           chartTimeFrames={[
@@ -86,7 +70,7 @@ const Home: NextPage = () => {
             { icon: 'diamond', title: 'BORG staked', number: coinsStaked, percentage: stakedPercentage },
             { icon: 'diamond', title: 'BORG in Yield', number: coinsYeild, percentage: yeildPercentage },
             { icon: 'fire', title: 'Circulating supply burned', number: coinsBurned },
-            { icon: 'buyback', title: 'BORG in buyback pool', number: buybackPool },
+            { icon: 'buyback', title: 'BORG in buyback pool', number: buybackPool }
           ]}
         />
       </Block>
