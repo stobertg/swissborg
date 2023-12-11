@@ -1,5 +1,4 @@
 import { ChartOptions } from 'chart.js'
-import { theme } from '@theme'
 
 export const Options: ChartOptions<'line'> = {
   maintainAspectRatio: false,

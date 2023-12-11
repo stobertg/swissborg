@@ -1,33 +1,33 @@
 import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { borgTokenData, get24HourChange, getOneMonthChange, getOneYearChange, getAllTimeChange } from '@lib'
+import { borgTokenData, get24HourChange, getOneMonthChange, getOneYearChange, getAllTimeChange, getChangePercentage } from '@lib'
 
 const Home: NextPage = () => {
-  const { chartData, supplyInfo } = borgTokenData()
+  const { chartData, tokenInfo } = borgTokenData()
   const [ currentData, setCurrentData ] = useState( '24h' )
 
   // For the data of the main line chart within the hero section of the site
   // This shows the overall data concentrated to 24 hours, 1 month, 1 year, and all time
 
-  const borgIconUrl = supplyInfo?.metadata.image.small || ''
-  const borgIconAlt = supplyInfo?.metadata.name || ''
-  let currentPrice = supplyInfo?.metadata.market_data.current_price.usd || 0
-  let changePercentage24hr = chartData && chartData.prices24h ? get24HourChange(chartData.prices24h) : 0
-  let changePercentage1m = chartData && chartData.prices1m ? getOneMonthChange(chartData.prices1m) : 0
-  let changePercentage1y = chartData && chartData.prices1y ? getOneYearChange( chartData.prices1y, chartData.prices24h ) : 0
-  let changePercentageAllTime = chartData && chartData.pricesAll ? getAllTimeChange( chartData.pricesAll ) : 0
+  const borgIconUrl = tokenInfo?.metadata.image.small || ''
+  const borgIconAlt = tokenInfo?.metadata.name || ''
+  const currentPrice = tokenInfo?.metadata.market_data.current_price.usd || 0
+  const changePercentage24hr = getChangePercentage(chartData, 'prices24h', get24HourChange);
+  const changePercentage1m = getChangePercentage(chartData, 'prices1m', getOneMonthChange);
+  const changePercentage1y = getChangePercentage(chartData, 'prices1y', getOneYearChange);
+  const changePercentageAllTime = getChangePercentage(chartData, 'pricesAll', getAllTimeChange);
 
   // For the data of the donut chart - this shows the data and percentage makeup of the Borg token
   // This populates the numbers on the left of the container and the chart itself of the right
 
-  let remainingSupply = supplyInfo ? supplyInfo.maxSupply - supplyInfo.circulatingSupply : 0
-  let coinsStaked = 179102513
-  let stakedPercentage = supplyInfo ? (coinsStaked / supplyInfo.circulatingSupply) * 100 : 0
-  let coinsYeild = 362065045
-  let yeildPercentage = supplyInfo ? (coinsYeild / supplyInfo.circulatingSupply) * 100 : 0
-  let coinsBurned = 9901614.29
-  let buybackPool = 13456
+  const coinsStaked = 179102513
+  const coinsYeild = 362065045
+  const coinsBurned = 9901614.29
+  const buybackPool = 13456
+  const remainingSupply = tokenInfo ? tokenInfo.maxSupply - tokenInfo.circulatingSupply : 0
+  const stakedPercentage = tokenInfo ? (coinsStaked / tokenInfo.circulatingSupply) * 100 : 0
+  const yeildPercentage = tokenInfo ? (coinsYeild / tokenInfo.circulatingSupply) * 100 : 0
 
   return (
 
