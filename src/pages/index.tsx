@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
-import { SiteContainer, Block, Hero, SupplyChart } from '@components'
+import { Preloader, SiteContainer, Block, Hero, SupplyChart } from '@components'
 import { borgTokenData, get24HourChange, getOneMonthChange, getOneYearChange, getAllTimeChange, getChangePercentage } from '@lib'
 
 const Home: NextPage = () => {
+  const [ isLoading, setIsLoading ] = useState( true )
   const { chartData, tokenInfo } = borgTokenData()
   const [ currentData, setCurrentData ] = useState( '24h' )
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <Preloader />
+  }
 
   // For the data of the main line chart within the hero section of the site
   // This shows the overall data concentrated to 24 hours, 1 month, 1 year, and all time
