@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
-import { BorgChartData } from '../Data'
+import { BorgLineChart } from './'
 
 // For the master container of the main market chart in the hero section
 // This contains the actual data - with the line chart and the data to populate it
@@ -83,8 +83,11 @@ export const BorgChart = ({
 
     <ChartWrap>
       { chartData ? ( 
-        <BorgChartData {...{ chartData, currentData }} /> 
+
+        <BorgLineChart {...{ chartData, currentData }} /> 
+        
       ) : (
+
         <ChartFallback>
           <FallbackContent>
             <FallbackImage>
@@ -92,11 +95,12 @@ export const BorgChart = ({
             </FallbackImage>
 
             <figcaption>
-              <Heading bold size="l3" title="Malfunction" />
+              <Heading bold size="l3" title="Waiting for API" />
               <Heading size="l1" title="Waiting for Coingecko api. If not loading, too many calls have been made and will need to wait a min to reload." />
             </figcaption>
           </FallbackContent>
         </ChartFallback>
+
       )}
     </ChartWrap>
 

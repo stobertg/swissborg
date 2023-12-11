@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { borgTokenData, getOneYearChange, getAllTimeChange } from '@lib'
+import { borgTokenData, get24HourChange, getOneYearChange, getAllTimeChange } from '@lib'
 
 const Home: NextPage = () => {
   const { chartData, supplyInfo } = borgTokenData()
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const borgIconUrl = supplyInfo?.metadata.image.small || ''
   const borgIconAlt = supplyInfo?.metadata.name || ''
   let currentPrice = supplyInfo?.metadata.market_data.current_price.usd || 0
-  let changePercentage24hr = supplyInfo?.metadata.market_data.price_change_percentage_1h_in_currency.usd || 0
+  let changePercentage24hr = chartData && chartData.prices24h ? get24HourChange(chartData.prices24h) : 0;
   let changePercentage30d = supplyInfo?.metadata.market_data.price_change_percentage_30d_in_currency.usd || 0
   let changePercentage1y = chartData && chartData.prices1y ? getOneYearChange( chartData.prices1y, chartData.prices24h ) : 0
   let changePercentageAllTime = chartData && chartData.pricesAll ? getAllTimeChange( chartData.pricesAll ) : 0

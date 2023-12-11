@@ -3,12 +3,17 @@ import { ChartOptions, Scale } from 'chart.js'
 export const Options: ChartOptions<'line'> = {
   maintainAspectRatio: false,
   layout: {
-    padding: { 
-      top: 32
+    autoPadding: false,
+    padding: {
+      top: 30,
+      right: 0,
+      left: 0,
+      bottom: 0
     }
   },
   scales: {
     x: {
+      bounds: 'ticks',
       grid: {
         display: false,
       },
@@ -17,22 +22,12 @@ export const Options: ChartOptions<'line'> = {
         autoSkip: true,
         align: 'inner',
         color: '#fff',
-        padding: 10    
-      },
-      afterBuildTicks: (scale: Scale) => {
-        let ticks = scale.ticks;
-
-        if (ticks.length > 6) {
-          const interval = Math.floor(ticks.length / 5);
-          
-          const selectedTicks = [
-            ticks[0],
-            ...Array.from({ length: 4 }, (_, i) => ticks[(i + 1) * interval]),
-            ticks[ticks.length - 1]
-          ];
-
-          scale.ticks = selectedTicks;
-        }
+        crossAlign: 'center',
+        // padding: 10,
+        labelOffset: 20,
+        font: {
+          family: 'TTCommons-Regular'
+        },
       }
     },
     y: {
@@ -41,13 +36,16 @@ export const Options: ChartOptions<'line'> = {
         color: 'rgba(255, 255, 255, 0.05)',
       },
       ticks: {
+        font: {
+          family: 'TTCommons-bold',
+          size: 14
+        },
         maxTicksLimit: 5, 
         mirror: true,
         align: 'center',
         color: '#fff',
-        padding: 0,
-        z: 10,
-        
+        padding: -10,
+        z: 1
       }
     },
   },
@@ -55,5 +53,8 @@ export const Options: ChartOptions<'line'> = {
     legend: {
       display: false,
     },
+    tooltip: {
+      enabled: false
+    }
   }
 };

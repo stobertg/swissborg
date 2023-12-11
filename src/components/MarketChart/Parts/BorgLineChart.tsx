@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Line } from 'react-chartjs-2'
-import { Options } from './'
+import { Options } from '../Options/Options'
+import { useTabletBreakpoint } from '@lib'
 
 // -------------- Typescript declarations -------------- //
 
@@ -22,34 +23,40 @@ interface NewChartComponentProps {
 
 // ---------- This is the end of declarations ---------- //
 
-export const BorgChartData = ({ 
-    chartData, 
-    currentData 
+export const BorgLineChart = ({ 
+    chartData, // Required - For the data of the chart
+    currentData // Required - For the data of the chart
   }: NewChartComponentProps) => {
+
+   // Here we need to make some changes on mobile for the x axis ticks for readability
+   // We remove two ticks for mobile breakpoints and remove 'yyyy' for years and 'dd/mm' for all time 
+
+  const isTablet = useTabletBreakpoint()
+
+  // For the general styling of the line chart, which uses chart js
+  // This sets the data points, color of the line, the gradient green color attached to the line, ect.
 
   const createDataset = ( dataPoints: DataPoint[] ) => ({
     label: `Price (${ currentData })`,
     data: dataPoints.map(( p: DataPoint ) => p[ 1 ]),
-    borderColor: 'rgb( 1, 195, 141 )',
     fill: true,
-    pointRadius: 0,
     tension: 0.5,
+    pointRadius: 0,
+    borderColor: 'rgb( 1, 195, 141 )',
     borderWidth: 2,
     backgroundColor: function( context: any ) {
       const chart = context.chart
       const { ctx, chartArea } = chart
-
-      if ( !chartArea ) {
-        return null
-      }
-
+      if ( !chartArea ) { return null }
       const gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
       gradient.addColorStop( 1, 'rgba( 1, 195, 141, 0.4 )' )
       gradient.addColorStop( 0, 'rgba( 1, 195, 141, 0 )' )
-
       return gradient
     },
   })
+
+  // Here we set the data we want to render on the chart
+  // Here we have 24 hr by default and data for 24hrs, 1 Month, 1 Year, and All Time
 
   const currentDataset = () => {
     if ( !chartData ) return createDataset([])
@@ -64,6 +71,7 @@ export const BorgChartData = ({
   }
 
   // For the 24 hour chart to take in time stamps only - not date stamps 
+  // This will render the x axis as hour stamps such as 00:00 - 24:00
 
   const formatDateAsTimestamp = (date: Date) => {
     const hours = date.getHours().toString().padStart(2, '0')
@@ -71,33 +79,26 @@ export const BorgChartData = ({
     return hours + ':' + minutes;
   }
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize)
-  }, []);
+  // By default the chart js data is set to American format 'mm/dd/yyyy'
+  // Here we customize the date to follow European date standards and customize it to 'dd/mm/yyyy'
 
   const formatDateEuropean = (date: Date, dataRange: string) => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear().toString();
   
-    if (isMobile && (dataRange === '1y' || dataRange === '1m')) {
+    if (isTablet && (dataRange === '1y' || dataRange === '1m')) {
       return `${day}/${month}`;
     } else if (dataRange === 'all') {
       return year;
     } else {
       return `${day}/${month}/${year}`
     }
-  };
-   
-   
+  }
 
+  // Based on out formatDateEuropean and the tablet edits, we set the label change in the folling const
+  // This will adjust the x axis ticks to render how we need them to
+   
   const chartDisplayData = {
     labels: chartData 
       ? (currentData === '24h'
@@ -110,15 +111,15 @@ export const BorgChartData = ({
       )
       : [],
     datasets: [ currentDataset() ]
-  };
-  
-  
+  }
 
+  // --------- End of the function declarations ---------- //
+  
   return ( 
   
     <Line 
       data={ chartDisplayData } 
-      options={ Options } 
+      options={ Options }
     /> 
     
   )
