@@ -40,6 +40,7 @@
     "react-dom": "^18.2.0",
     "react-reveal": "^1.2.2",
     "react-scroll-fade-animation": "^0.5.3",
+    "react-spinners": "^0.13.8",
     "splitting": "^1.0.6",
     "stagger-text-reveal-animation": "^1.0.0",
     "storybook-addon-css-user-preferences": "^0.0.3",

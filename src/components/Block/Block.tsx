@@ -1,5 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
+import "@animxyz/core"
+import { XyzTransition } from '@animxyz/react'
 
 // For the master container of the block component
 // This is a foundational component used as a automated block that deals with things such as width and background color
@@ -63,7 +65,9 @@ export const Block = ({
   return(
 
     <BlockWrap {...{ bgColor }}>
-      <BlockContent {...{ width }}>{ children }</BlockContent>
+      <XyzTransition xyz="fade" appearVisible>
+        <BlockContent {...{ width }}>{ children }</BlockContent>
+      </XyzTransition>
     </BlockWrap>
 
   )
