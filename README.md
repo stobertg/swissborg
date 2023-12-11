@@ -2,7 +2,7 @@ Hello SwissBorg 👋 Thanks for taking to time to review my technical challange 
 
 [https://tylerstober.com](Portfolio Website)
 [https://www.linkedin.com/in/tyler-stober/](LinkedIn)
-[mailto:stobertg@gmail.com](Email)
+stobertg@gmail.com
 
 ## Getting Started
 
