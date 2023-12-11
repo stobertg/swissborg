@@ -109,7 +109,7 @@ export const DonutChart = ({ data }: ChartProps) => {
       tooltip: { enabled: false },
       legend: { display: false }
     },
-    cutout: '64.9%'
+    cutout: '65%'
   }
 
   // For the gradient colors of the data blocks within the chart data
@@ -121,7 +121,7 @@ export const DonutChart = ({ data }: ChartProps) => {
     { start: 'rgba(204, 243, 232, 1)', end: 'rgba(204, 243, 232, 1)' }, // Green solid
     { start: 'rgba(19, 229, 191, 1)', end: 'rgba(1, 195, 141, 1)' }, // Green tint
     { start: 'rgba(54, 64, 83, 1)', end: 'rgba(25, 30, 41, 1)' }, // Black
-  ], []);
+  ], [])
 
   // Now that we have all of the gradient colors above, here we map it on the data points within the chart
   // As radial gradients which will allow for the lighter color on the outside and the darker on the inner

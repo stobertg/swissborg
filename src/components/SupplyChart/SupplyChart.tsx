@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Grid, Heading, Stats } from '@components'
-import { useTabletBreakpoint } from '@lib'
 import { DonutChart } from './Parts/DonutChart'
 
 // For the master container of the Chart section of the technical challange
@@ -56,6 +55,16 @@ const StatWrap = styled('div', {
   marginTop: 20
 })
 
+// This was a tricky one because when I tried to use my onTabletBreakpoint function, located in my lib folder
+// It created a weird bug where the donut chart would flash out and not show up on tablet breakpoints
+// So for that reason, had to take a css approach
+
+const ShowOnTablet = styled('div', {
+  display: 'none',
+  fontFamily: 'inherit',
+  '@tablet': { display: 'inline-flex' }
+})
+
 // -------------- Typescript declarations -------------- //
 
 interface ChartProps {
@@ -76,8 +85,6 @@ export const SupplyChart = ({
     stats, // Required - For the stats on the chart (left side of container)
     chartData // Required - For the data of the donut chart, populated by the stats
   }:ChartProps) => {
-  
-  const isTablet = useTabletBreakpoint()
 
   return(
 
@@ -90,7 +97,7 @@ export const SupplyChart = ({
           align="center" 
           title={
             <>
-              { isTablet && <>BORG Buyback performance </> }
+              <ShowOnTablet>BORG Buyback performance&nbsp;</ShowOnTablet>
               <>{ title }</>
             </>
           }

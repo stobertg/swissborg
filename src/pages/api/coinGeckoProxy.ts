@@ -6,7 +6,6 @@ const BASE_URL = 'https://api.coingecko.com/api/v3'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { days } = req.query
 
     const config: AxiosRequestConfig = {
       headers: API_KEY ? { 'Authorization': `Bearer ${API_KEY}` } : {}
