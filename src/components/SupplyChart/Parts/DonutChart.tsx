@@ -1,7 +1,46 @@
 import React, { useRef, useEffect } from 'react'
+import { styled } from '@theme'
 import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js'
 import 'chart.js/auto'
+
+// For the master container of the donut chart, which shows the data of the current token supply points
+// For this we need because we need to account for the drop shadow begind the chart - which isn't a default in chartjs
+
+const DonutWrap = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: 428,
+  height: 428,
+  canvas: { posiiton: 'relative', zIndex: 9999 },
+
+  // For the shared styling of the outside and inside shadow
+  // The outside shadow you can see to the left of the outer rim while the inset shadow in within the circle on the right
+
+  '&:before, &:after': { 
+    content: '',
+    position: 'absolute',
+    width: 'calc( 100% - 150px )',
+    height: 'calc( 100% - 150px )',
+    border: '75px solid rgba( 0,0,0,0 )',
+    borderRadius: '50%',
+    zIndex: 0,
+  },
+
+  // For the inner shadow you can see on the right of the chart
+
+  '&:before': {
+    boxShadow: 'inset -2px 0px 5px rgba( 0,0,0, 0.3 )'
+  },
+
+  // For the outer shadow you can see on the left of the chart
+
+  '&:after': {
+    boxShadow: '-2px 0px 5px rgba( 0,0,0, 0.3 )',
+  }
+})
 
 // -------------- Typescript declarations -------------- //
 
@@ -37,24 +76,15 @@ export const DonutChart = ({ data }: ChartProps) => {
     animation: {
       duration: 0
     },
-    layout: {
-      padding: {
-        top: 100,
-        right: 100,
-        bottom: 100,
-        left: 100
-      }
-    },
     plugins: {
       tooltip: {
         enabled: false
       },
       legend: {
         display: false
-      },
-      
+      }
     },
-    cutout: '70%',
+    cutout: '64.9%',
   }
 
   useEffect(() => {
@@ -92,15 +122,18 @@ export const DonutChart = ({ data }: ChartProps) => {
       chart.update();
     }
   }, [data, options.cutout])
-
+  
   return( 
 
-    <Doughnut 
-      ref={chartRef}
-      data={ chartData } 
-      options={ options } 
-      width={ 0.8 }
-    />
+    <DonutWrap>
+      <Doughnut 
+        ref={chartRef}
+        data={ chartData } 
+        options={ options } 
+        width={ 0.8 }
+      />
+    </DonutWrap>
+
 
   )
 }
