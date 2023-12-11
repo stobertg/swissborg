@@ -24,7 +24,17 @@ const HeaderContent = styled('div', {
   width: '95%',
   margin: '0 auto',
   padding: '20px 0',
-  '> *:not(:last-child)': { marginRight: 12 }
+  '> *:not(:last-child)': { marginRight: 12 },
+
+  // On tablet, we switch the orientation of the container to vertical
+  // This will set the icons on the top of the container and the titles below the icons
+
+  '@tablet': {
+    width: '90%',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    '> *:not(:last-child)': { margin: '0 0 12px 0' }
+  }
 })
 
 // For the container of the token icons on the left of the container
@@ -60,6 +70,7 @@ const TokenHex = styled('div', {
   height: 32,
   maskImage: 'url(/assets/hex.svg)',
   maskRepeat: 'no-repeat',
+  background: '$brandPrimary',
 
   // For the SwissBorg logo to sit within the master container
   // This will allow for the icon to be positioned in the center of the container and maintain aspect ratio
@@ -126,10 +137,12 @@ export const ChartHeader = ({
           <Tokens>
             <Icon size="l2" icon="fiat" />
             <TokenHex>
-              <img 
-                src={ borgTokenIcon } 
-                alt={ borgTokenIconAlt } 
-              />
+              { borgTokenIcon && ( 
+                <img 
+                  src={ borgTokenIcon } 
+                  alt={ borgTokenIconAlt } 
+                />
+              )}
             </TokenHex>
           </Tokens>
 

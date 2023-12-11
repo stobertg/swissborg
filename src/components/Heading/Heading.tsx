@@ -17,10 +17,10 @@ const HeadingWrap = styled('div', {
     size: {
       'l0': { fontSize: '$s0', lineHeight: 1 }, // 14px
       'l1': { fontSize: '$s1', lineHeight: 1 }, // 18px
-      'l2': { fontSize: '$s2', lineHeight: 1, '@mobile': { fontSize: '$s1' }}, // 22px > 18px
-      'l3': { fontSize: '$s3', lineHeight: 1, '@mobile': { fontSize: '$s2' }}, // 28px > 22px
-      'l4': { fontSize: '$s6', lineHeight: 1, '@mobile': { fontSize: '$s4' }}, // 48px > 32px
-      'l5': { fontSize: '$s7', lineHeight: 1, '@mobile': { fontSize: '$s5' }}  // 80px > 40px
+      'l2': { fontSize: '$s2', lineHeight: 1, '@tablet': { fontSize: '$s1' }}, // 22px > 18px
+      'l3': { fontSize: '$s3', lineHeight: 1, '@tablet': { fontSize: '$s2' }}, // 28px > 22px
+      'l4': { fontSize: '$s6', lineHeight: 1, '@tablet': { fontSize: '$s4' }}, // 48px > 32px
+      'l5': { fontSize: '$s7', lineHeight: 1, '@tablet': { fontSize: '$s5' }}  // 80px > 40px
     },
 
     // For the different colors of the heading - if needed can change to SwissBorg's brand color, such as the numbers
