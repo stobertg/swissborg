@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getBorgMarketSupply = async () => {
+export const getBorgTokenData = async () => {
   try {
 
     const response = await axios.get('/api/coinGeckoProxy', {

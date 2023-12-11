@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getBorgMarketSupply } from '../pages/api/supply'
+import { getBorgTokenData } from '../pages/api/coinGecko'
 
 interface ChartData {
   prices24h: [ number, number ][]
@@ -37,7 +37,7 @@ export const useChartData = (): { chartData: ChartData | null, supplyInfo: Suppl
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getBorgMarketSupply();
+        const data = await getBorgTokenData();
         if ( data ) {
           setChartData({
             prices24h: data.prices24h,
