@@ -93,7 +93,7 @@ export const BorgChart = ({
 
             <figcaption>
               <Heading bold size="l3" title="Malfunction" />
-              <Heading size="l1" title="Chart is not loading. Please make sure you're conneted to the internet" />
+              <Heading size="l1" title="Waiting for Coingecko api. If not loading, too many calls have been made and will need to wait a min to reload." />
             </figcaption>
           </FallbackContent>
         </ChartFallback>
