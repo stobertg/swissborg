@@ -103,9 +103,15 @@ const DonutMain = styled('div', {
     boxShadow: '-2px 0px 5px rgba( 0,0,0, 0.3 )',
   },
 
+  // On tablet breakpoint, we will adjust the width and height of the donut chart to be smaller
+  // This is so the chart is within the site container on mobile devices
+
   '@tablet': {
     width: 320,
     height: 320,
+
+    // Since we are adjusting the width and height, we also need to adjust the inner and outer shadows
+    // This will make it hug the same width and height of the donut chart
 
     '&:before, &:after': { 
       width: 'calc( 100% - 112px )',
@@ -134,7 +140,7 @@ interface GradientColor {
 // ---------- This is the end of declarations ---------- //
 
 export const DonutChart = ({ data }: ChartProps) => {
-  const chartRef = useRef<ChartJS<'doughnut', number[], string>>(null)
+  const chartRef = useRef<ChartJS<'doughnut', number[], string>>( null )
 
   const gradientColors = useMemo(() => [
     { start: 'rgba(173, 149, 255, 1)', end: 'rgba(120, 105, 255, 1)' }, // Purple
@@ -171,32 +177,32 @@ export const DonutChart = ({ data }: ChartProps) => {
   }
 
   useEffect(() => {
-    const chart = chartRef.current;
+    const chart = chartRef.current
   
     if (chart) {
       const ctx = chart.ctx
       const chartArea = chart.chartArea
-      const centerX = (chartArea.left + chartArea.right) / 2
+      const centerX = ( chartArea.left + chartArea.right ) / 2
       const centerY = ( chartArea.top + chartArea.bottom ) / 2
-      const maxRadius = Math.min(chartArea.right - chartArea.left, chartArea.bottom - chartArea.top) / 2
+      const maxRadius = Math.min( chartArea.right - chartArea.left, chartArea.bottom - chartArea.top ) / 2
       const outerRadius = maxRadius;
       const cutoutValue = options.cutout || '50%'
-      const cutoutPercentage = parseInt(cutoutValue, 10) / 100
+      const cutoutPercentage = parseInt( cutoutValue, 10 ) / 100
       const innerRadius = outerRadius * cutoutPercentage
   
-      if (!chartArea) return;
+      if ( !chartArea ) return
   
       const gradients = data.map((_, i) => {
-        let gradient = ctx.createRadialGradient(centerX, centerY, innerRadius, centerX, centerY, outerRadius)
-        gradient.addColorStop(0, gradientColors[ i ].end)
-        gradient.addColorStop(1, gradientColors[ i ].start )
+        let gradient = ctx.createRadialGradient( centerX, centerY, innerRadius, centerX, centerY, outerRadius )
+        gradient.addColorStop( 0, gradientColors[ i ].end )
+        gradient.addColorStop( 1, gradientColors[ i ].start )
         return gradient
       })
 
-      chart.data.datasets[0].backgroundColor = gradients;
-      chart.update();
+      chart.data.datasets[ 0 ].backgroundColor = gradients
+      chart.update()
     }
-  }, [data, options.cutout, gradientColors])
+  }, [ data, options.cutout, gradientColors ])
   
   return( 
     <DonutWrap>
@@ -211,7 +217,7 @@ export const DonutChart = ({ data }: ChartProps) => {
     <DonutLegend>
       {data.map((item, i) => (
         <LegendItem key={`item-${ i }`}>
-          <Color style={{ background: `linear-gradient(${gradientColors[i].start}, ${gradientColors[i].end})` }} />
+          <Color style={{ background: `linear-gradient(${ gradientColors[ i ].start}, ${gradientColors[ i ].end} )` }} />
           <Heading title={ item.title } />
         </LegendItem>
       ))}
