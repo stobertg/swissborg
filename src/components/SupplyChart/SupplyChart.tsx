@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Grid, Heading, Stats } from '@components'
+import { useTabletBreakpoint } from '@lib'
 import { DonutChart } from './Parts/DonutChart'
 
 // For the master container of the Chart section of the technical challange
@@ -47,6 +48,9 @@ const Chart = styled('div', {
   width: '100%'
 })
 
+// For the master container of the stats on the left of the container
+// We need this to be able to posiiton this center to the donut chart to the right
+
 const StatWrap = styled('div', {
   position: 'relative',
   marginTop: 20
@@ -72,6 +76,8 @@ export const SupplyChart = ({
     stats, // Required - For the stats on the chart (left side of container)
     chartData // Required - For the data of the donut chart, populated by the stats
   }:ChartProps) => {
+  
+  const isTablet = useTabletBreakpoint()
 
   return(
 
@@ -82,7 +88,12 @@ export const SupplyChart = ({
           bold 
           size="l4" 
           align="center" 
-          {...{ title }} 
+          title={
+            <>
+              { isTablet && <>BORG Buyback performance </> }
+              <>{ title }</>
+            </>
+          }
         />
       </ChartTitle>
 
