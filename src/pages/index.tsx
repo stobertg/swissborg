@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import { SiteContainer, Block, Hero, SupplyChart } from '@components'
-import { borgTokenData, get24HourChange, getOneYearChange, getAllTimeChange } from '@lib'
+import { borgTokenData, get24HourChange, getOneMonthChange, getOneYearChange, getAllTimeChange } from '@lib'
 
 const Home: NextPage = () => {
   const { chartData, supplyInfo } = borgTokenData()
   const [ currentData, setCurrentData ] = useState( '24h' )
 
+  // For the data of the main line chart within the hero section of the site
+  // This shows the overall data concentrated to 24 hours, 1 month, 1 year, and all time
+
   const borgIconUrl = supplyInfo?.metadata.image.small || ''
   const borgIconAlt = supplyInfo?.metadata.name || ''
   let currentPrice = supplyInfo?.metadata.market_data.current_price.usd || 0
-  let changePercentage24hr = chartData && chartData.prices24h ? get24HourChange(chartData.prices24h) : 0;
-  let changePercentage30d = supplyInfo?.metadata.market_data.price_change_percentage_30d_in_currency.usd || 0
+  let changePercentage24hr = chartData && chartData.prices24h ? get24HourChange(chartData.prices24h) : 0
+  let changePercentage1m = chartData && chartData.prices1m ? getOneMonthChange(chartData.prices1m) : 0
   let changePercentage1y = chartData && chartData.prices1y ? getOneYearChange( chartData.prices1y, chartData.prices24h ) : 0
   let changePercentageAllTime = chartData && chartData.pricesAll ? getAllTimeChange( chartData.pricesAll ) : 0
+
+  // For the data of the donut chart - this shows the data and percentage makeup of the Borg token
+  // This populates the numbers on the left of the container and the chart itself of the right
 
   let remainingSupply = supplyInfo ? supplyInfo.maxSupply - supplyInfo.circulatingSupply : 0
   let coinsStaked = 179102513
@@ -36,7 +42,7 @@ const Home: NextPage = () => {
           currentPrice={ currentPrice }
           percentageChange={ 
             currentData === '24h' ? changePercentage24hr : 
-            currentData === '1m' ? changePercentage30d : 
+            currentData === '1m' ? changePercentage1m : 
             currentData === '1y' ? changePercentage1y : 
             changePercentageAllTime
           }

@@ -24,7 +24,10 @@ const HeroContent = styled('div', {
 
 const HeroTitle = styled('div', {
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  '@tablet': {
+    '> *:not(:last-child)': { marginBottom: 20 }
+  }
 })
 
 // -------------- Typescript declarations -------------- //

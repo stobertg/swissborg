@@ -1,4 +1,5 @@
-import { ChartOptions, Scale } from 'chart.js'
+import { ChartOptions } from 'chart.js'
+import { theme } from '@theme'
 
 export const Options: ChartOptions<'line'> = {
   maintainAspectRatio: false,
@@ -14,32 +15,22 @@ export const Options: ChartOptions<'line'> = {
   scales: {
     x: {
       bounds: 'ticks',
-      grid: {
-        display: false,
-      },
+      grid: { display: false },
       ticks: {
         maxTicksLimit: 6, 
         autoSkip: true,
         align: 'inner',
         color: '#fff',
         crossAlign: 'center',
-        // padding: 10,
         labelOffset: 20,
-        font: {
-          family: 'TTCommons-Regular'
-        },
+        font: { family: 'TTCommons-Regular' }
       }
     },
     y: {
       position: 'right',
-      grid: {
-        color: 'rgba(255, 255, 255, 0.05)',
-      },
+      grid: { color: 'rgba(255, 255, 255, 0.05)' },
       ticks: {
-        font: {
-          family: 'TTCommons-bold',
-          size: 14
-        },
+        font: { family: 'TTCommons-bold', size: 14 },
         maxTicksLimit: 5, 
         mirror: true,
         align: 'center',
@@ -50,11 +41,7 @@ export const Options: ChartOptions<'line'> = {
     },
   },
   plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      enabled: false
-    }
+    legend: { display: false },
+    tooltip: { enabled: false }
   }
-};
+}
