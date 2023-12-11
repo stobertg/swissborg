@@ -17,7 +17,24 @@ export const Options: ChartOptions<'line'> = {
         autoSkip: true,
         align: 'inner',
         color: '#fff',
-        padding: 10
+        padding: 10,
+        callback: function(val, index, ticks) {
+          const isSmallScreen = window.innerWidth <= 500;
+        
+          if (isSmallScreen) {
+            const midLeftIndex = Math.floor((ticks.length - 1) / 2)
+            const midRightIndex = Math.floor((ticks.length - 1) / 2) + 1
+        
+            if (index === 0 || index === midLeftIndex || index === midRightIndex || index === ticks.length - 1) {
+              return this.getLabelForValue(val as number);
+            }
+            return '';
+          } else {
+            return this.getLabelForValue(val as number);
+          }
+        }
+        
+               
       },
       afterBuildTicks: (scale: Scale) => {
         let ticks = scale.ticks;

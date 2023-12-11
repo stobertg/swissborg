@@ -48,7 +48,7 @@ export const BorgChartData = ({
 
       return gradient
     },
-  });
+  })
 
   const currentDataset = () => {
     if ( !chartData ) return createDataset([])
@@ -60,12 +60,36 @@ export const BorgChartData = ({
       case 'all': return createDataset( chartData.pricesAll )
       default: return createDataset( chartData.prices24h )
     }
-  };
+  }
+
+  // For the 24 hour chart to take in time stamps only - not date stamps 
+
+  const formatDateAsTimestamp = (date: Date) => {
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return hours + ':' + minutes;
+  }
+
+  const formatDateEuropean = (date: Date, includeYear: boolean = false) => {
+    const day = date.getDate().toString().padStart(2, '0')
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = includeYear ? `/${date.getFullYear()}` : '';
+    return `${day}/${month}${year}`;
+  }
 
   const chartDisplayData = {
-    labels: chartData ? chartData.prices24h.map(( p: DataPoint ) => new Date(p[0]).toLocaleDateString()) : [],
+    labels: chartData 
+      ? (currentData === '24h'
+          ? chartData.prices24h.map((p: DataPoint) => formatDateAsTimestamp(new Date(p[0])))
+          : currentData === '1m'
+            ? chartData.prices1m.map((p: DataPoint) => formatDateEuropean(new Date(p[0])))
+            : currentData === '1y'
+              ? chartData.prices1y.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), true))
+              : chartData.pricesAll.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), true))
+        )
+      : [],
     datasets: [ currentDataset() ]
-  };
+  }  
 
   return ( 
   
