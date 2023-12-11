@@ -52,26 +52,30 @@ const Color = styled('div', {
   }
 })
 
+// -------------- Typescript declarations -------------- //
+
 interface LegendItemStyle {
-  start: string;
-  end: string;
+  start: string
+  end: string
 }
 
 interface LegendProps {
   data: {
-    style: LegendItemStyle;
-    title: string;
-  }[];
+    style: LegendItemStyle
+    title: string
+  }[]
 }
+
+// ---------- This is the end of declarations ---------- //
 
 export const Legend = ({ data }:LegendProps) => {
   return(
 
     <DonutLegend>
-      {data.map((item, index) => (
-        <LegendItem key={`legend-item-${index}`}>
-          <Color style={{ background: `linear-gradient(${item.style.start}, ${item.style.end})` }} />
-          <Heading title={item.title} />
+      {data.map(( item, i ) => (
+        <LegendItem key={`legend-item-${ i }`}>
+          <Color style={{ background: `linear-gradient(${ item.style.start }, ${ item.style.end })` }} />
+          <Heading title={ item.title } />
         </LegendItem>
       ))}
     </DonutLegend>
