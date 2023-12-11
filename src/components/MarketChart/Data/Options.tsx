@@ -62,7 +62,9 @@ export const Options: ChartOptions<'line'> = {
         mirror: true,
         align: 'center',
         color: '#fff',
-        padding: 0
+        padding: 0,
+        z: 10,
+        
       }
     },
   },

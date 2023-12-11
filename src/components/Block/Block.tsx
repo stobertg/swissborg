@@ -31,6 +31,7 @@ const BlockContent = styled('div', {
   width: '100%',
   margin: '0 auto',
   padding: '100px 0',
+  '@tablet': { padding: '75px 0' },
 
   // Here we account for the different content widths supported
   // This is for the content that is needed to be smaller or larger, depending on the context

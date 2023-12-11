@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Line } from 'react-chartjs-2'
 import { Options } from './'
 
@@ -34,6 +34,7 @@ export const BorgChartData = ({
     fill: true,
     pointRadius: 0,
     tension: 0.5,
+    borderWidth: 2,
     backgroundColor: function( context: any ) {
       const chart = context.chart
       const { ctx, chartArea } = chart
@@ -65,31 +66,53 @@ export const BorgChartData = ({
   // For the 24 hour chart to take in time stamps only - not date stamps 
 
   const formatDateAsTimestamp = (date: Date) => {
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')
     return hours + ':' + minutes;
   }
 
-  const formatDateEuropean = (date: Date, includeYear: boolean = false) => {
-    const day = date.getDate().toString().padStart(2, '0')
-    const month = (date.getMonth() + 1).toString().padStart(2, '0')
-    const year = includeYear ? `/${date.getFullYear()}` : '';
-    return `${day}/${month}${year}`;
-  }
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize)
+  }, []);
+
+  const formatDateEuropean = (date: Date, dataRange: string) => {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+  
+    if (isMobile && (dataRange === '1y' || dataRange === '1m')) {
+      return `${day}/${month}`;
+    } else if (dataRange === 'all') {
+      return year;
+    } else {
+      return `${day}/${month}/${year}`
+    }
+  };
+   
+   
 
   const chartDisplayData = {
     labels: chartData 
       ? (currentData === '24h'
-          ? chartData.prices24h.map((p: DataPoint) => formatDateAsTimestamp(new Date(p[0])))
-          : currentData === '1m'
-            ? chartData.prices1m.map((p: DataPoint) => formatDateEuropean(new Date(p[0])))
-            : currentData === '1y'
-              ? chartData.prices1y.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), true))
-              : chartData.pricesAll.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), true))
-        )
+        ? chartData.prices24h.map((p: DataPoint) => formatDateAsTimestamp(new Date(p[0])))
+        : currentData === '1m'
+          ? chartData.prices1m.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), '1m'))
+          : currentData === '1y'
+            ? chartData.prices1y.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), '1y'))
+            : chartData.pricesAll.map((p: DataPoint) => formatDateEuropean(new Date(p[0]), 'all'))
+      )
       : [],
     datasets: [ currentDataset() ]
-  }  
+  };
+  
+  
 
   return ( 
   
