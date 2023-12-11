@@ -47,6 +47,11 @@ const Chart = styled('div', {
   width: '100%'
 })
 
+const StatWrap = styled('div', {
+  position: 'relative',
+  marginTop: 20
+})
+
 // -------------- Typescript declarations -------------- //
 
 interface ChartProps {
@@ -86,9 +91,8 @@ export const SupplyChart = ({
           columns={ 2 }
           tabletColumns={ 1 } 
           columnGap="l3" 
-          verticalAlignment="center"
         >
-          <Stats {...{ stats }} />
+          <StatWrap><Stats {...{ stats }} /></StatWrap>
           <Chart><DonutChart data={ chartData } /></Chart>
         </Grid>
       </ChartContent>
