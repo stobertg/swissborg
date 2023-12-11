@@ -8,6 +8,9 @@ const Home: NextPage = () => {
   const { chartData, tokenInfo } = borgTokenData()
   const [ currentData, setCurrentData ] = useState( '24h' )
 
+  // For the two second preloader to get everything set
+  // Has no functional purpose of loading anything
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
