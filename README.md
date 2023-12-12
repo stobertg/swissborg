@@ -1,19 +1,14 @@
+<img src="./public/global/readme-img.webp" alt="Tyler Stober" />
+<br/>
 Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. You can view the tech challange at the link below, or obvisouly can clone it and run it locally.
 
-https://swissborg.vercel.app/
-
-
-<img src="./public/global/readme-img.webp" alt="Tyler Stober" />
-
+🖥 https://swissborg.vercel.app/
 
 Tech used:
-Nextjs
-
-CoinGecko API
-
-Chartjs
-
-Stitches
+<br/>Nextjs
+<br/>CoinGecko API
+<br/>Chartjs
+<br/>Stitches
 
 If you have any questions or would like to reach out, please don't hesitate. Otherwise you can connect with me here:
 
