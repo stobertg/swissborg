@@ -1,6 +1,6 @@
 <img src="./public/global/readme-img.webp" alt="Tyler Stober" />
 <br/>
-Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. You can view the tech challange at the link below, or obvisouly can clone it and run it locally.
+Hello SwissBorg 👋 Thanks for taking the time to review my technical challenge - I appreciate the time and consideration. You can view the tech challenge at the link below, or obviously can clone it and run it locally.
 
 <br/> 🖥 https://swissborg.vercel.app/
 
@@ -14,7 +14,7 @@ Tech used:
 <br/>Animxyz
 <br/>ESLint
 
-<br/>One thing to note, since I'm using real data, is as I was working through the labels on donut chart, I felt that the current lockup was not going to work with the up-to-date data. Labels would overlap or look wonky from a design perspective - that is why I chose to move the legend to the bottom of the chart.
+<br/>One thing to note, since I'm using real data, is as I was working through the labels on the donut chart, I felt that the current layout was not going to work with the up-to-date data. Labels would overlap or look wonky from a design perspective - that is why I chose to move the legend to the bottom of the chart.
 <br/><br/><img src="./public/global/problem.webp" alt="Tyler Stober" />
 
 If you have any questions or would like to reach out, please don't hesitate. Otherwise you can connect with me through the links below. All the best and thanks again!
