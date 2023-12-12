@@ -45,7 +45,7 @@ export const HeadTags = ({
         <meta name="twitter:card" content={ socialImage } />
         <meta key="twitterSite" name="twitter:site" content="@MXML" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta data-react-helmet="true" property="og:image" content="https://images.prismic.io/swissborg-website/e8573bff-5eec-40e6-994e-aff476e3367c_Opengraph-Homepage-Default-EN.png?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50&amp;rect=0%2C0%2C2400%2C1260&amp;w=2400&amp;h=1260"></meta>
+        <meta data-react-helmet="true" property="og:image" content={ socialImage }></meta>
         <meta property="og:image:alt" content="MXML Creative" />
         <meta name="twitter:image:alt" content="MXML Creative" />
         <title>{ pageTitle }</title>

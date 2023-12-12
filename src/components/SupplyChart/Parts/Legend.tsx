@@ -22,7 +22,8 @@ const LegendItem = styled('div', {
   flexDirection: 'row',
   alignItems: 'center',
   position: 'relative',
-  '> *:not(:last-child)': { marginRight: 8 }
+  '> *:not(:last-child)': { marginRight: 8 },
+  '> *:last-child': { marginTop: 5 }
 })
 
 // For the container of the color on the left of the container, next to the title

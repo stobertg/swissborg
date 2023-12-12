@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '@theme'
+import { styled, lightTheme } from '@theme'
 import BarLoader from "react-spinners/BarLoader"
 
 // For the master container of the loading screen
@@ -21,9 +21,11 @@ const LoadingWrap = styled('div', {
 // ---------- This is the end of declarations ---------- //
 
 export const Preloader = () => {
+  const primary = lightTheme.colors.brandPrimary.value
+
   return(
     
-    <LoadingWrap><BarLoader color="#01c38d" /></LoadingWrap>
+    <LoadingWrap><BarLoader color={ primary } /></LoadingWrap>
 
   )
 }

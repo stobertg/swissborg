@@ -70,7 +70,7 @@ export const Heading = ({
     bold // Optional - For the heading to be in bold font
   }:HeadingProps) => {
 
-  const HTag = htag ? HEADING_ELEMENTS[ htag ] : HeadingWrap;
+  const HTag = htag ? HEADING_ELEMENTS[ htag ] : HeadingWrap
 
   return(
 

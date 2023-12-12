@@ -13,16 +13,25 @@ const SiteWrap = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface SiteProps {
+  pageTitle: string
+  content: string
+  socialImage: string
   children: React.ReactNode
 }
 
 // ---------- This is the end of declarations ---------- //
 
-export const SiteContainer = ({ children }:SiteProps) => {
+export const SiteContainer = ({ 
+    pageTitle, // Required - For the title of the page
+    content, // Required - For the content explaing the page
+    socialImage, // Required - For the image to be shared on social mediums
+    children // Required - For the main content of the page
+  }:SiteProps) => {
+
   return(
 
     <SiteWrap>
-      <HeadTags />
+      <HeadTags {...{ socialImage, pageTitle, content }} />
       { children }
     </SiteWrap>
 

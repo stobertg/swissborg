@@ -1,7 +1,7 @@
 export const Typeface = [
   {
     fontFamily: 'TTCommons-Bold',
-    src: 'local("TTCommons-Bold"), url("/fonts/TTCommons-Bold.ttf")',
+    src: 'local("TTCommons-DemiBold"), url("/fonts/TTCommons-DemiBold.ttf")',
     fontWeight: 'normal',
     fontStyle: 'normal'
   },
