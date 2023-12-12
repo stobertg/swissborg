@@ -69,10 +69,10 @@ interface StatProps {
 // ---------- This is the end of declarations ---------- //
 
 export const StatBase = ({
-    icon, 
-    title,
-    statNumber,
-    statPercentage 
+    icon, // Required - For the icon on the left of the container
+    title, // Required - For the title of the data
+    statNumber, // Required - For the number of the data
+    statPercentage // Optional - For hthe percentage of the data vs supply
   }:StatProps) => {
   
   return(

@@ -74,12 +74,12 @@ const DonutMain = styled('div', {
 // -------------- Typescript declarations -------------- //
 
 interface DataItem {
-  title: string;
-  number: number;
+  title: string
+  number: number
 }
 
 interface ChartProps {
-  data: DataItem[];
+  data: DataItem[]
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -135,7 +135,7 @@ export const DonutChart = ({ data }: ChartProps) => {
       const centerX = ( chartArea.left + chartArea.right ) / 2
       const centerY = ( chartArea.top + chartArea.bottom ) / 2
       const maxRadius = Math.min( chartArea.right - chartArea.left, chartArea.bottom - chartArea.top ) / 2
-      const outerRadius = maxRadius;
+      const outerRadius = maxRadius
       const cutoutValue = options.cutout || '50%'
       const cutoutPercentage = parseInt( cutoutValue, 10 ) / 100
       const innerRadius = outerRadius * cutoutPercentage
