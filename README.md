@@ -31,8 +31,6 @@ How to run:
 ```bash
 yarn install
 yarn dev
-
-Add CoinGecko API to your .env.local file as NEXT_PUBLIC_COINGECKO_API
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
