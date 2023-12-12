@@ -71,5 +71,5 @@ export const TimeButtons = ({
 
       ))}
     </ButtonWrap>
-  );
-};
+  )
+}

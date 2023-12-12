@@ -96,7 +96,7 @@ export const BorgChart = ({
 
             <figcaption>
               <Heading bold size="l3" title="Waiting for API" />
-              <Heading size="l1" title="Waiting for CoinGecko api. If not loading, too many calls have been made on the 'free plan' and will need to wait a min to reload." />
+              <Heading size="l1" title="Waiting for CoinGecko api. If not loading, too many calls have been made on the 'free tier' and will need to wait a min to reload." />
             </figcaption>
           </FallbackContent>
         </ChartFallback>

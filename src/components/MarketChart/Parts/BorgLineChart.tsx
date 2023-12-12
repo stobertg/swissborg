@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { theme } from '@theme'
 import { Line } from 'react-chartjs-2'
 import { Options } from '../Options/Options'
 import { useTabletBreakpoint } from '@lib'
@@ -28,10 +29,14 @@ export const BorgLineChart = ({
     currentData // Required - For the data of the chart
   }: NewChartComponentProps) => {
 
-   // Here we need to make some changes on mobile for the x axis ticks for readability
-   // We remove two ticks for mobile breakpoints and remove 'yyyy' for years and 'dd/mm' for all time 
+  const greenColor = theme.colors.green.value
+  const rgbValues = greenColor.match(/\d+/g)
+
+  // Here we need to make some changes on mobile for the x axis ticks for readability
+  // We remove two ticks for mobile breakpoints and remove 'yyyy' for years and 'dd/mm' for all time 
 
   const isTablet = useTabletBreakpoint()
+  if (!rgbValues) { return null }
 
   // For the general styling of the line chart, which uses chart js
   // This sets the data points, color of the line, the gradient green color attached to the line, ect.
@@ -42,15 +47,15 @@ export const BorgLineChart = ({
     fill: true,
     tension: 0.5,
     pointRadius: 0,
-    borderColor: 'rgb( 1, 195, 141 )',
+    borderColor: greenColor,
     borderWidth: 2,
     backgroundColor: function( context: any ) {
       const chart = context.chart
       const { ctx, chartArea } = chart
       if ( !chartArea ) { return null }
       const gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
-      gradient.addColorStop( 1, 'rgba( 1, 195, 141, 0.4 )' )
-      gradient.addColorStop( 0, 'rgba( 1, 195, 141, 0 )' )
+      gradient.addColorStop( 1, `rgba( ${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]}, 0.4 )` )
+      gradient.addColorStop( 0, `rgba( ${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]}, 0 )` )
       return gradient
     },
   })
@@ -76,21 +81,21 @@ export const BorgLineChart = ({
   const formatDateAsTimestamp = (date: Date) => {
     const hours = date.getHours().toString().padStart(2, '0')
     const minutes = date.getMinutes().toString().padStart(2, '0')
-    return hours + ':' + minutes;
+    return hours + ':' + minutes
   }
 
   // By default the chart js data is set to American format 'mm/dd/yyyy'
   // Here we customize the date to follow European date standards and customize it to 'dd/mm/yyyy'
 
   const formatDateEuropean = (date: Date, dataRange: string) => {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
+    const day = date.getDate().toString().padStart(2, '0')
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = date.getFullYear().toString()
   
     if (isTablet && (dataRange === '1y' || dataRange === '1m')) {
-      return `${day}/${month}`;
+      return `${day}/${month}`
     } else if (dataRange === 'all') {
-      return year;
+      return year
     } else {
       return `${day}/${month}/${year}`
     }
