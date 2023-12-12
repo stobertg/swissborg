@@ -3,8 +3,7 @@ Hello SwissBorg 👋 Thanks for taking to time to review my technical challange 
 https://swissborg.vercel.app/
 
 
-
-If you have any questions or would like to reach out, please reach out. Otherwise you can connect with me here:
+If you have any questions or would like to reach out, please don't hesitate. Otherwise you can connect with me here:
 
 [https://tylerstober.com](https://tylerstober.com)
 
@@ -19,7 +18,8 @@ How to run:
 ```bash
 yarn install
 yarn dev
-add CoinGeckoAPI to your .env.local file
+
+Add CoinGeckoAPI to your .env.local file
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
