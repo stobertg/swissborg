@@ -51,15 +51,15 @@ interface HeroProps {
 export const Hero = ({ 
     title, // Required - For the main title of the site
     subTitle, // Required - For the subtitle of the site, below the main title
-    borgTokenIcon,
-    borgTokenIconAlt,
-    currentPrice,
-    percentageChange,
-    timeFrame,
-    chartData,
-    currentData,
-    setCurrentData,
-    chartTimeFrames
+    borgTokenIcon, // Required - For the SwissBorg Logo / Token Logo
+    borgTokenIconAlt, // Required - For a11y reader and seo of the token icon
+    currentPrice, // Required - For the current price vs USD
+    percentageChange, // Required - For the current percentage change vs USD
+    timeFrame, // Required - For the time time frame of the percentage change
+    chartData, // Required - For the API call of the SwissBorg token data
+    currentData, // Required - For the default chart value (24hr)
+    setCurrentData, // Required - For the ability to change the chart value
+    chartTimeFrames // Required - For the buttons to change the time frame
   }:HeroProps) => {
 
   return(

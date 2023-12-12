@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@theme'
 
 // For the master container of the icons
-// Icons are used in various parts of the size, such as buttons, steps, static, ect
+// These contain the SwissBorg branded icons that are primary used in the supply chart
 
 const IconWrap = styled('div', {
   display: 'flex',
