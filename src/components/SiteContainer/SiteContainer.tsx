@@ -15,7 +15,6 @@ const SiteWrap = styled('div', {
 interface SiteProps {
   pageTitle: string
   content: string
-  socialImage: string
   children: React.ReactNode
 }
 
@@ -24,14 +23,13 @@ interface SiteProps {
 export const SiteContainer = ({ 
     pageTitle, // Required - For the title of the page
     content, // Required - For the content explaing the page
-    socialImage, // Required - For the image to be shared on social mediums
     children // Required - For the main content of the page
   }:SiteProps) => {
 
   return(
 
     <SiteWrap>
-      <HeadTags {...{ socialImage, pageTitle, content }} />
+      <HeadTags {...{ pageTitle, content }} />
       { children }
     </SiteWrap>
 

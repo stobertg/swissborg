@@ -49,7 +49,6 @@ const Home: NextPage = () => {
     <SiteContainer
       pageTitle="SwissBorg Tech Challange"
       content="Tyler Stober - SwissBorg Technical Challange"
-      socialImage='https://images.prismic.io/swissborg-website/e8573bff-5eec-40e6-994e-aff476e3367c_Opengraph-Homepage-Default-EN.png?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50&amp;rect=0%2C0%2C2400%2C1260&amp;w=2400&amp;h=1260'
     >
       <Block width="medium" bgColor="darkGradient">
         <Hero 

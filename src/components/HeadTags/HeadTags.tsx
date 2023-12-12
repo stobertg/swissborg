@@ -7,7 +7,6 @@ interface HeadProps {
   content?: string
   shareURL?: string
   pageTitle?: string
-  socialImage?: string
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -15,8 +14,7 @@ interface HeadProps {
 export const HeadTags = ({
     content, // For the page content to be used within SEO and social Sharing
     shareURL, // For the page to be shared within social media links
-    pageTitle, // For the title of the page
-    socialImage // For the image displayed if the link is shared on social media sites
+    pageTitle // For the title of the page
   }: HeadProps ) => {
   
   return(
@@ -39,13 +37,13 @@ export const HeadTags = ({
         <meta key="ogTitle" property="og:title" content={ pageTitle } />
         <meta key="ogDescription" property="og:description" content={ content } />
         <meta key="twitterUrl" property="twitter:url" content={ shareURL } />
-        <meta key="twitterCard" name="twitter:card" content={ socialImage } />
+        <meta key="twitterCard" name="twitter:card" content="https://images.prismic.io/swissborg-website/e8573bff-5eec-40e6-994e-aff476e3367c_Opengraph-Homepage-Default-EN.png?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50&amp;rect=0%2C0%2C2400%2C1260&amp;w=2400&amp;h=1260" />
         <meta key="twitterTitle" name="twitter:title" content={ pageTitle } />
         <meta key="twitterDescription" name="twitter:description" content={ content } />
-        <meta name="twitter:card" content={ socialImage } />
+        <meta name="twitter:card" content="https://images.prismic.io/swissborg-website/e8573bff-5eec-40e6-994e-aff476e3367c_Opengraph-Homepage-Default-EN.png?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50&amp;rect=0%2C0%2C2400%2C1260&amp;w=2400&amp;h=1260" />
         <meta key="twitterSite" name="twitter:site" content="@MXML" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta data-react-helmet="true" property="og:image" content={ socialImage }></meta>
+        <meta data-react-helmet="true" property="og:image" content="https://images.prismic.io/swissborg-website/e8573bff-5eec-40e6-994e-aff476e3367c_Opengraph-Homepage-Default-EN.png?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50&amp;rect=0%2C0%2C2400%2C1260&amp;w=2400&amp;h=1260"></meta>
         <meta property="og:image:alt" content="MXML Creative" />
         <meta name="twitter:image:alt" content="MXML Creative" />
         <title>{ pageTitle }</title>
