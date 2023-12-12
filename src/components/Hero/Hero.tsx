@@ -32,6 +32,17 @@ const HeroTitle = styled('div', {
 
 // -------------- Typescript declarations -------------- //
 
+interface DataPoint {
+  [ key: number ]: number
+}
+
+interface ChartData {
+  prices24h: DataPoint[]
+  prices1m: DataPoint[]
+  prices1y: DataPoint[]
+  pricesAll: DataPoint[]
+}
+
 interface HeroProps {
   title: string
   subTitle: string
@@ -40,9 +51,9 @@ interface HeroProps {
   currentPrice: number
   percentageChange: number
   timeFrame: string
-  chartData: any
-  currentData: any
-  setCurrentData: any
+  chartData: ChartData | null
+  currentData: string
+  setCurrentData: ( timeFrame: string ) => void
   chartTimeFrames: { title: string }[]
 }
 

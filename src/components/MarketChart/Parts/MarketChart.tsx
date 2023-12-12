@@ -67,9 +67,20 @@ const FallbackImage = styled('div', {
 
 // -------------- Typescript declarations -------------- //
 
+interface DataPoint {
+  [ key: number ]: number
+}
+
+interface ChartData {
+  prices24h: DataPoint[]
+  prices1m: DataPoint[]
+  prices1y: DataPoint[]
+  pricesAll: DataPoint[]
+}
+
 interface ChartProps {
-  chartData: any
-  currentData: any
+  chartData: ChartData | null
+  currentData: string
 }
 
 // ---------- This is the end of declarations ---------- //

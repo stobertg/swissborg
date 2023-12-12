@@ -73,13 +73,11 @@ const DonutMain = styled('div', {
 
 // -------------- Typescript declarations -------------- //
 
-interface DataItem {
-  title: string
-  number: number
-}
-
 interface ChartProps {
-  data: DataItem[]
+  data: {
+    title: string
+    number: number
+  }[]
 }
 
 // ---------- This is the end of declarations ---------- //

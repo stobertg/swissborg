@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   const [ currentData, setCurrentData ] = useState( '24h' )
 
   // For the two second preloader to get everything set
-  // Has no functional purpose of loading anything
+  // Has no functional purpose of loading anything - a bit of a faux loader to make sure the styles don't flicker
 
   useEffect(() => {
     const timer = setTimeout(() => {

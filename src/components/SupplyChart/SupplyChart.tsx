@@ -69,7 +69,10 @@ const ShowOnTablet = styled('div', {
 
 interface ChartProps {
   title: string
-  chartData: any
+  chartData: {
+    title: string
+    number: number
+  }[]
   stats: {
     title: string
     icon: string
