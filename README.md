@@ -6,6 +6,7 @@ Hello SwissBorg 👋 Thanks for taking to time to review my technical challange 
 
 Tech used:
 <br/>Nextjs
+<br/>Vercel (JAMStack principles: local env (NextJs) > github > vercel > production)
 <br/>CoinGecko API
 <br/>Chartjs
 <br/>Stitches
