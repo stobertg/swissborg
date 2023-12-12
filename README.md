@@ -1,13 +1,18 @@
-Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. You can view the tech challange at the link below, or obvisouly can download and run it locally.
+Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. You can view the tech challange at the link below, or obvisouly can clone it and run it locally.
 
 https://swissborg.vercel.app/
 
+
 <img src="./public/global/readme-img.webp" alt="Tyler Stober" />
+
 
 Tech used:
 Nextjs
+
 CoinGecko API
+
 Chartjs
+
 Stitches
 
 If you have any questions or would like to reach out, please don't hesitate. Otherwise you can connect with me here:
