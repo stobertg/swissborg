@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { globalStyles, lightTheme, darkTheme } from '@theme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function SwissBorgTechChallange({ Component, pageProps }: AppProps) {
   useEffect(() => { globalStyles() }, [])
 
   return (
@@ -18,4 +18,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default SwissBorgTechChallange

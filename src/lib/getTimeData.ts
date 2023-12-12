@@ -45,17 +45,16 @@ export const getAllTimeChange = ( pricesAll: [ number, number ][] ) => {
 // For finding the change percentage for the different time frames
 
 type ChartData = {
-  prices24h?: [number, number][];
-  prices1m?: [number, number][];
-  prices1y?: [number, number][];
-  pricesAll?: [number, number][];
-};
+  prices24h?: [ number, number ][]
+  prices1m?: [ number, number ][]
+  prices1y?: [ number, number ][]
+  pricesAll?: [ number, number ][]
+}
 
-// Update the getChangePercentage function
 export const getChangePercentage = (
   data: ChartData | null,
   timeframe: keyof ChartData,
-  changeFunction: (prices: [number, number][]) => number
+  changeFunction: ( prices: [ number, number ][]) => number
 ): number => {
-  return data && data[timeframe] ? changeFunction(data[timeframe]!) : 0;
-};
+  return data && data[ timeframe ] ? changeFunction( data[ timeframe ]! ) : 0
+}

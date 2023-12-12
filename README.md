@@ -1,4 +1,10 @@
-Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. If you have any questions or would like to reach out, please reach out. Otherwise you can connect with me here:
+Hello SwissBorg 👋 Thanks for taking to time to review my technical challange - I appreciate the time and consideration. You can view the tech challange at the link below, or obvisouly can download and run it locally.
+
+https://swissborg.vercel.app/
+
+
+
+If you have any questions or would like to reach out, please reach out. Otherwise you can connect with me here:
 
 [https://tylerstober.com](https://tylerstober.com)
 
@@ -13,6 +19,7 @@ How to run:
 ```bash
 yarn install
 yarn dev
+add CoinGeckoAPI to your .env.local file
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

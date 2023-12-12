@@ -33,24 +33,24 @@ export const useChartData = (): { chartData: ChartData | null, tokenInfo: TokenI
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getBorgTokenData();
+        const data = await getBorgTokenData()
         if ( data ) {
           setChartData({
             prices24h: data.prices24h,
             prices1m: data.prices1m,
             prices1y: data.prices1y,
             pricesAll: data.pricesAll
-          });
+          })
           setTokenInfo({
             circulatingSupply: data.circulatingSupply,
             maxSupply: data.maxSupply,
             metadata: data.metadata
-          });
+          })
         }
       } catch ( error ) {
         console.error( "Error fetching data:", error )
       }
-    };
+    }
 
     fetchData()
   }, [])
