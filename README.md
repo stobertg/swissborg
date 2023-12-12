@@ -10,7 +10,7 @@ Tech used:
 <br/>Chartjs
 <br/>Stitches
 
-<br/>One thing to note, since I'm using real data, is as I was working through the labels on donut chart, it was apparent that the current lockup was going to work with the up-to-date data and labels would overlap or look wonky from a design perspective - that is why I chose to move the legend to the bottom of the chart.
+<br/>One thing to note, since I'm using real data, is as I was working through the labels on donut chart, it was apparent that the current lockup was not going to work with the up-to-date data. Labels would overlap or look wonky from a design perspective - that is why I chose to move the legend to the bottom of the chart.
 <br/><br/><img src="./public/global/problem.webp" alt="Tyler Stober" />
 
 <br/>If you have any questions or would like to reach out, please don't hesitate. Otherwise you can connect with me here:
