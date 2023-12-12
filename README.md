@@ -10,6 +10,9 @@ Tech used:
 <br/>CoinGecko API
 <br/>Chartjs
 <br/>Stitches
+<br/>Theming
+<br/>Animxyz
+<br/>ESLint
 
 <br/>One thing to note, since I'm using real data, is as I was working through the labels on donut chart, I felt that the current lockup was not going to work with the up-to-date data. Labels would overlap or look wonky from a design perspective - that is why I chose to move the legend to the bottom of the chart.
 <br/><br/><img src="./public/global/problem.webp" alt="Tyler Stober" />
