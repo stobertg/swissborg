@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(false)
     }, 4000)
     return () => clearTimeout(timer)
   }, [])
@@ -28,10 +28,10 @@ const Home: NextPage = () => {
   const borgIconUrl = tokenInfo?.metadata.image.small || ''
   const borgIconAlt = tokenInfo?.metadata.name || ''
   const currentPrice = tokenInfo?.metadata.market_data.current_price.usd || 0
-  const changePercentage24hr = getChangePercentage(chartData, 'prices24h', get24HourChange);
-  const changePercentage1m = getChangePercentage(chartData, 'prices1m', getOneMonthChange);
-  const changePercentage1y = getChangePercentage(chartData, 'prices1y', getOneYearChange);
-  const changePercentageAllTime = getChangePercentage(chartData, 'pricesAll', getAllTimeChange);
+  const changePercentage24hr = getChangePercentage( chartData, 'prices24h', get24HourChange )
+  const changePercentage1m = getChangePercentage( chartData, 'prices1m', getOneMonthChange )
+  const changePercentage1y = getChangePercentage( chartData, 'prices1y', getOneYearChange )
+  const changePercentageAllTime = getChangePercentage( chartData, 'pricesAll', getAllTimeChange )
 
   // For the data of the donut chart - this shows the data and percentage makeup of the Borg token
   // This populates the numbers on the left of the container and the chart itself of the right
